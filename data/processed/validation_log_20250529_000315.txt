@@ -1,0 +1,238 @@
+================================================================================
+ENHANCED DATASET VALIDATION
+================================================================================
+Validation started at: 2025-05-29 00:03:15.962442
+
+[OK] Loaded stations data: 12 stations
+[OK] Loaded enhanced adjacency matrix: shape (12, 12)
+[OK] Loaded feature columns: 43 features
+[OK] Loaded enhanced scalers
+[OK] Loaded train_enhanced.pkl
+[OK] Loaded valid_enhanced.pkl
+[OK] Loaded test_enhanced.pkl
+
+==================================================
+STATIONS DATA VALIDATION
+==================================================
+Number of stations: 12
+Columns: ['station', 'lat', 'lon', 'elevation', 'land_cover']
+[OK] No missing values found
+
+Data types:
+  station: object
+  lat: float64
+  lon: float64
+  elevation: float64
+  land_cover: float64
+
+Geographic ranges:
+  Latitude: 39.888080 to 40.329050
+  Longitude: 116.215020 to 116.692280
+[OK] Created station locations plot: station_locations.png
+
+==================================================
+FEATURE COLUMNS VALIDATION
+==================================================
+Number of features: 43
+Expected features: 40
+[ERROR] Missing expected features: ['elevation', 'land_cover']
+[INFO] Extra features found: ['PM2.5_station_mean', 'pres_elevation_interaction', 'elevation_norm', 'PM2.5_station_std', 'temp_elevation_interaction']
+
+Feature categories:
+  Original Pollutants: 6/6 features
+  Weather: 5/5 features
+  Location: 3/3 features
+  Temporal: 8/8 features
+  Engineered Weather: 9/9 features
+  PM2.5 Lag Features: 4/4 features
+  PM2.5 Rolling Stats: 8/8 features
+
+==================================================
+DATASETS VALIDATION
+==================================================
+
+TRAIN Dataset:
+  Format: pandas DataFrame
+  Shape: (291862, 45)
+  Columns: 45
+    [OK] No missing values
+  Numeric columns: 43
+    PM2.5: range [-1.0281, 9.6065], mean 0.0000, std 1.0000
+    PM10: range [-1.2515, 10.7831], mean 0.0000, std 1.0000
+
+VALID Dataset:
+  Format: pandas DataFrame
+  Shape: (103151, 45)
+  Columns: 45
+    [OK] No missing values
+  Numeric columns: 43
+    PM2.5: range [-1.0281, 11.1009], mean -0.1257, std 0.9423
+    PM10: range [-1.2411, 10.5430], mean -0.1448, std 0.9460
+
+TEST Dataset:
+  Format: pandas DataFrame
+  Shape: (16728, 45)
+  Columns: 45
+    [OK] No missing values
+  Numeric columns: 43
+    PM2.5: range [-1.0404, 9.0377], mean 0.1323, std 1.3958
+    PM10: range [-1.2201, 9.5248], mean 0.0300, std 1.3453
+
+Total samples across all datasets: 411741
+Total missing values across all datasets: 0
+[OK] Created dataset size plot: dataset_sizes.png
+
+==================================================
+ADJACENCY MATRIX VALIDATION
+==================================================
+Shape: (12, 12)
+Data type: float64
+Memory usage: 0.00 MB
+[OK] Matrix is square
+Symmetric: [OK]
+Diagonal sum: 0.0 (should be 0)
+
+Value statistics:
+  Min: 0.000000
+  Max: 1.000000
+  Mean: 0.152778
+  Std: 0.359773
+  Non-zero elements: 22
+  Sparsity: 84.72%
+
+Connections per station:
+  Mean: 1.83
+  Min: 0
+  Max: 4
+
+Detailed connections per station:
+  Aotizhongxin: 3 connections
+  Changping: 1 connections
+  Dingling: 1 connections
+  Dongsi: 4 connections
+  Guanyuan: 4 connections
+  Gucheng: 1 connections
+  Huairou: 0 connections
+  Nongzhanguan: 3 connections
+  Shunyi: 1 connections
+  Tiantan: 3 connections
+  Wanliu: 1 connections
+  Wanshouxigong: 0 connections
+[OK] Created adjacency matrix heatmap: adjacency_matrix_enhanced.png
+[OK] Created connection analysis plot: connection_analysis.png
+
+==================================================
+SCALERS VALIDATION
+==================================================
+Number of scalers: 12
+
+Scaler: Aotizhongxin
+  Type: StandardScaler
+  Scale shape: (43,)
+  Scale range: [0.257595, 1204.331509]
+  Mean shape: (43,)
+  Mean range: [-0.060824, 1274.177161]
+
+Scaler: Changping
+  Type: StandardScaler
+  Scale shape: (43,)
+  Scale range: [0.239653, 1080.744443]
+  Mean shape: (43,)
+  Mean range: [-0.165717, 1139.262148]
+
+Scaler: Dingling
+  Type: StandardScaler
+  Scale shape: (43,)
+  Scale range: [0.239021, 849.507454]
+  Mean shape: (43,)
+  Mean range: [-0.162165, 2767.171469]
+
+Scaler: Dongsi
+  Type: StandardScaler
+  Scale shape: (43,)
+  Scale range: [0.256122, 1140.593023]
+  Mean shape: (43,)
+  Mean range: [-339.722869, 1343.988632]
+
+Scaler: Guanyuan
+  Type: StandardScaler
+  Scale shape: (43,)
+  Scale range: [0.257534, 1135.662669]
+  Mean shape: (43,)
+  Mean range: [-90.047757, 1295.312700]
+
+Scaler: Gucheng
+  Type: StandardScaler
+  Scale shape: (43,)
+  Scale range: [0.249800, 1190.548909]
+  Mean shape: (43,)
+  Mean range: [-835.854281, 1355.112000]
+
+Scaler: Huairou
+  Type: StandardScaler
+  Scale shape: (43,)
+  Scale range: [0.267235, 863.174293]
+  Mean shape: (43,)
+  Mean range: [-213.893693, 1036.536706]
+
+Scaler: Nongzhanguan
+  Type: StandardScaler
+  Scale shape: (43,)
+  Scale range: [0.256565, 1220.386564]
+  Mean shape: (43,)
+  Mean range: [-755.679501, 1349.285549]
+
+Scaler: Shunyi
+  Type: StandardScaler
+  Scale shape: (43,)
+  Scale range: [0.244512, 1079.406165]
+  Mean shape: (43,)
+  Mean range: [-1089.052927, 1180.209067]
+
+Scaler: Tiantan
+  Type: StandardScaler
+  Scale shape: (43,)
+  Scale range: [0.256476, 1142.088360]
+  Mean shape: (43,)
+  Mean range: [-547.685789, 1314.560869]
+
+Scaler: Wanliu
+  Type: StandardScaler
+  Scale shape: (43,)
+  Scale range: [0.258246, 1225.844652]
+  Mean shape: (43,)
+  Mean range: [-422.306728, 1339.118971]
+
+Scaler: Wanshouxigong
+  Type: StandardScaler
+  Scale shape: (43,)
+  Scale range: [0.254249, 1207.345077]
+  Mean shape: (43,)
+  Mean range: [-0.326214, 1399.601880]
+
+================================================================================
+COMPREHENSIVE DATASET SUMMARY
+================================================================================
+Dataset Overview:
+  Total Stations: 12
+  Total Features: 43
+  Total Samples: 411741
+  Total Missing Values: 0
+  Network Sparsity: 84.72%
+  Estimated Memory Usage: 163.91 MB
+
+Data Quality Assessment:
+  Potential Issues Found:
+    [WARNING] Missing 2 expected features
+
+Validation completed at: 2025-05-29 00:03:19.597316
+
+================================================================================
+VALIDATION COMPLETE!
+================================================================================
+Log file saved as: validation_log_20250529_000315.txt
+Generated plots:
+  - station_locations.png
+  - dataset_sizes.png
+  - adjacency_matrix_enhanced.png
+  - connection_analysis.png

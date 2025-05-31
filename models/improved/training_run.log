@@ -1,0 +1,1310 @@
+2025-05-30 20:00:58,623 - src.trainers.train - INFO - train.py:156 - setup_logging - Logging setup complete. Level: 10. Output dir: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-05-30 20:00:58,623 - src.trainers.train - INFO - train.py:603 - train_model - Starting PM2.5 model training with config: configs/improved_model_config.yaml
+2025-05-30 20:00:58,623 - src.trainers.train - INFO - train.py:604 - train_model - Output directory: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-05-30 20:00:58,660 - src.trainers.train - INFO - train.py:608 - train_model - Using device: cuda
+2025-05-30 20:00:58,662 - src.trainers.train - INFO - train.py:610 - train_model - CUDA Device: NVIDIA GeForce RTX 3050 Laptop GPU, Version: 11.8
+2025-05-30 20:00:58,662 - src.trainers.train - INFO - train.py:617 - train_model - TensorBoard logs: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\tensorboard_logs\20250530_200058
+2025-05-30 20:00:58,668 - src.trainers.train - INFO - train.py:620 - train_model - Step 1: Loading processed data...
+2025-05-30 20:00:58,668 - src.trainers.train - INFO - train.py:271 - load_processed_data - Loading processed data from directory: data/processed/
+2025-05-30 20:00:58,668 - src.trainers.train - INFO - train.py:276 - load_processed_data - Absolute data directory: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed
+2025-05-30 20:00:58,673 - src.trainers.train - DEBUG - train.py:283 - load_processed_data - Files in data directory 'C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed': ['adjacency_matrix_enhanced.png', 'adj_matrix_enhanced.npy', 'connection_analysis.png', 'dataset_sizes.png', 'feature_cols.pkl', 'model_config.pkl', 'scalers_enhanced.pkl', 'stations_with_features.csv', 'station_locations.png', 'test_enhanced.pkl', 'train_enhanced.csv', 'train_enhanced.pkl', 'validate_data.py', 'validation_log_20250528_233738.txt', 'validation_log_20250529_000315.txt', 'validation_log_20250529_000451.txt', 'valid_enhanced.pkl']
+2025-05-30 20:00:59,551 - src.trainers.train - INFO - train.py:331 - load_processed_data - Loaded train data - X: (291862, 43), Y: (291862, 1)
+2025-05-30 20:00:59,551 - src.trainers.train - INFO - train.py:332 - load_processed_data - Loaded valid data - X: (103151, 43), Y: (103151, 1)
+2025-05-30 20:00:59,551 - src.trainers.train - INFO - train.py:333 - load_processed_data - Loaded test data - X: (16728, 43), Y: (16728, 1)
+2025-05-30 20:00:59,551 - src.trainers.train - INFO - train.py:334 - load_processed_data - Adjacency matrix: (12, 12), Scalers: 12 keys, Feature cols: 43
+2025-05-30 20:00:59,562 - src.trainers.train - INFO - train.py:635 - train_model - Step 1.5: Preparing time series sequences (length 24)...
+2025-05-30 20:00:59,562 - src.trainers.train - INFO - train.py:641 - train_model - Raw data is 2D, creating time series sequences...
+2025-05-30 20:00:59,562 - src.trainers.train - INFO - train.py:354 - prepare_time_series_data - Preparing time series sequences: sequence_length=24, num_stations=12
+2025-05-30 20:00:59,562 - src.trainers.train - DEBUG - train.py:357 - prepare_time_series_data - Input shapes - X: (291862, 43), Y: (291862, 1)
+2025-05-30 20:01:01,051 - src.trainers.train - INFO - train.py:397 - prepare_time_series_data - Created sequences - X: (291839, 24, 43), Y: (291839, 12, 1)
+2025-05-30 20:01:01,694 - src.trainers.train - INFO - train.py:354 - prepare_time_series_data - Preparing time series sequences: sequence_length=24, num_stations=12
+2025-05-30 20:01:01,694 - src.trainers.train - DEBUG - train.py:357 - prepare_time_series_data - Input shapes - X: (103151, 43), Y: (103151, 1)
+2025-05-30 20:01:02,325 - src.trainers.train - INFO - train.py:397 - prepare_time_series_data - Created sequences - X: (103128, 24, 43), Y: (103128, 12, 1)
+2025-05-30 20:01:02,575 - src.trainers.train - INFO - train.py:666 - train_model - After time series prep - Train X:(291839, 24, 43), Y:(291839, 12, 1); Valid X:(103128, 24, 43), Y:(103128, 12, 1)
+2025-05-30 20:01:02,576 - src.trainers.train - INFO - train.py:675 - train_model - Step 3: Creating data loaders...
+2025-05-30 20:01:02,576 - src.trainers.train - WARNING - train.py:681 - train_model - num_workers > 0 on Windows can cause issues. Setting num_workers=0.
+2025-05-30 20:01:02,577 - src.trainers.train - DEBUG - train.py:686 - train_model - Using batch_size: 32, num_workers: 0
+2025-05-30 20:01:02,577 - src.trainers.train.MultiStationDataset - DEBUG - train.py:73 - __init__ - Initialized MultiStationDataset with X_data: (291839, 24, 43), Y_data: (291839, 12, 1), num_stations_model_expects: 12
+2025-05-30 20:01:02,577 - src.trainers.train.MultiStationDataset - DEBUG - train.py:73 - __init__ - Initialized MultiStationDataset with X_data: (103128, 24, 43), Y_data: (103128, 12, 1), num_stations_model_expects: 12
+2025-05-30 20:01:02,578 - src.trainers.train - DEBUG - train.py:714 - train_model - Created train_loader (9120 batches), valid_loader (3223 batches)
+2025-05-30 20:01:02,578 - src.trainers.train - INFO - train.py:718 - train_model - Step 4: Initializing model...
+2025-05-30 20:01:02,745 - src.trainers.train - INFO - train.py:740 - train_model - Model architecture:
+PM25Model(
+  (meteo_proj): Sequential(
+    (0): Linear(in_features=30, out_features=64, bias=True)
+    (1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+    (4): Linear(in_features=64, out_features=64, bias=True)
+    (5): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (6): ReLU()
+    (7): Dropout(p=0.15, inplace=False)
+  )
+  (pm25_proj): Sequential(
+    (0): Linear(in_features=12, out_features=64, bias=True)
+    (1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+    (4): Linear(in_features=64, out_features=64, bias=True)
+    (5): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (6): ReLU()
+    (7): Dropout(p=0.15, inplace=False)
+  )
+  (initial_feature_fusion): Sequential(
+    (0): Linear(in_features=128, out_features=64, bias=True)
+    (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.3, inplace=False)
+  )
+  (multi_scale1): MultiScaleResidualBlock(
+    (fc1_small): Linear(in_features=64, out_features=16, bias=True)
+    (fc1_medium): Linear(in_features=64, out_features=32, bias=True)
+    (fc1_large): Linear(in_features=64, out_features=16, bias=True)
+    (combine): Linear(in_features=64, out_features=64, bias=True)
+    (norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (skip): Identity()
+    (act): ReLU()
+  )
+  (multi_scale2): MultiScaleResidualBlock(
+    (fc1_small): Linear(in_features=64, out_features=16, bias=True)
+    (fc1_medium): Linear(in_features=64, out_features=32, bias=True)
+    (fc1_large): Linear(in_features=64, out_features=16, bias=True)
+    (combine): Linear(in_features=64, out_features=64, bias=True)
+    (norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (skip): Identity()
+    (act): ReLU()
+  )
+  (conv_lstm_cells): ModuleList(
+    (0-2): 3 x ConvLSTMCell(
+      (ih): Linear(in_features=64, out_features=256, bias=True)
+      (hh): Linear(in_features=64, out_features=256, bias=True)
+    )
+  )
+  (lstm_dropout): Dropout(p=0.3, inplace=False)
+  (gat): GraphAttentionLayer(
+    (leakyrelu): LeakyReLU(negative_slope=0.2)
+  )
+  (output_layer): Sequential(
+    (0): Linear(in_features=64, out_features=32, bias=True)
+    (1): LayerNorm((32,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.3, inplace=False)
+    (4): Linear(in_features=32, out_features=72, bias=True)
+  )
+  (output_transform): OutputTransformation()
+  (feature_dropout): Dropout(p=0.15, inplace=False)
+  (attention_dropout): Dropout(p=0.3, inplace=False)
+  (final_dropout): Dropout(p=0.36, inplace=False)
+)
+2025-05-30 20:01:02,747 - src.trainers.train - INFO - train.py:743 - train_model - Total parameters: 148,840, Trainable: 147,304
+2025-05-30 20:01:02,748 - src.trainers.train - INFO - train.py:747 - train_model - Step 5: Setting up optimizer and scheduler...
+2025-05-30 20:01:02,748 - src.trainers.train - INFO - train.py:762 - train_model - Step 6: Setting up early stopping...
+2025-05-30 20:01:02,749 - src.trainers.train.EarlyStopping - DEBUG - train.py:181 - __init__ - Initialized EarlyStopping: patience=15, min_delta=0.0001, mode=min
+2025-05-30 20:01:02,749 - src.trainers.train - INFO - train.py:768 - train_model - Step 7: Starting training loop...
+2025-05-30 20:01:02,749 - src.trainers.train - INFO - train.py:773 - train_model - ====== Epoch 1/2 ===== LR: 5.000000e-04 =====
+2025-05-30 20:01:02,750 - src.trainers.train - INFO - train.py:415 - log_memory_stats - GPU Memory - Allocated: 0.00GB, Reserved: 0.00GB
+2025-05-30 20:01:02,951 - src.trainers.train - DEBUG - train.py:442 - train_epoch - Batch 0 - X:torch.Size([32, 24, 12, 43]), Y:torch.Size([32, 12, 1]), X_min/max: -5.90/14.21
+2025-05-30 20:01:02,954 - src.trainers.train - INFO - train.py:415 - log_memory_stats - GPU Memory - Allocated: 0.00GB, Reserved: 0.02GB
+2025-05-30 20:01:03,206 - src.trainers.train - ERROR - train.py:522 - train_epoch - Error in training epoch 1: shape '[9216, 12]' is invalid for input of size 119808
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 467, in train_epoch
+    scaled_preds = model.predict(X_batch, return_raw_scaled=True)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 418, in predict
+    predictions = self.forward(x)  # This will be unscaled if possible
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 223, in forward
+    raw_pm25_features.reshape(batch_time_stations, self.pm25_feature_size)
+RuntimeError: shape '[9216, 12]' is invalid for input of size 119808
+2025-05-30 20:01:03,208 - src.trainers.train - ERROR - train.py:841 - train_model - Error in training process: shape '[9216, 12]' is invalid for input of size 119808
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 778, in train_model
+    train_loss, train_metrics = train_epoch(
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 467, in train_epoch
+    scaled_preds = model.predict(X_batch, return_raw_scaled=True)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 418, in predict
+    predictions = self.forward(x)  # This will be unscaled if possible
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 223, in forward
+    raw_pm25_features.reshape(batch_time_stations, self.pm25_feature_size)
+RuntimeError: shape '[9216, 12]' is invalid for input of size 119808
+2025-05-30 20:01:03,394 - __main__ - ERROR - train_improved_model.py:41 - <module> - Error during training: shape '[9216, 12]' is invalid for input of size 119808
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\scripts\train_improved_model.py", line 36, in <module>
+    train_model(config_path)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 778, in train_model
+    train_loss, train_metrics = train_epoch(
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 467, in train_epoch
+    scaled_preds = model.predict(X_batch, return_raw_scaled=True)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 418, in predict
+    predictions = self.forward(x)  # This will be unscaled if possible
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 223, in forward
+    raw_pm25_features.reshape(batch_time_stations, self.pm25_feature_size)
+RuntimeError: shape '[9216, 12]' is invalid for input of size 119808
+2025-05-30 20:09:05,890 - src.trainers.train - INFO - train.py:156 - setup_logging - Logging setup complete. Level: 10. Output dir: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-05-30 20:09:05,891 - src.trainers.train - INFO - train.py:603 - train_model - Starting PM2.5 model training with config: configs/improved_model_config.yaml
+2025-05-30 20:09:05,891 - src.trainers.train - INFO - train.py:604 - train_model - Output directory: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-05-30 20:09:05,922 - src.trainers.train - INFO - train.py:608 - train_model - Using device: cuda
+2025-05-30 20:09:05,924 - src.trainers.train - INFO - train.py:610 - train_model - CUDA Device: NVIDIA GeForce RTX 3050 Laptop GPU, Version: 11.8
+2025-05-30 20:09:05,925 - src.trainers.train - INFO - train.py:617 - train_model - TensorBoard logs: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\tensorboard_logs\20250530_200905
+2025-05-30 20:09:05,933 - src.trainers.train - INFO - train.py:620 - train_model - Step 1: Loading processed data...
+2025-05-30 20:09:05,933 - src.trainers.train - INFO - train.py:271 - load_processed_data - Loading processed data from directory: data/processed/
+2025-05-30 20:09:05,934 - src.trainers.train - INFO - train.py:276 - load_processed_data - Absolute data directory: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed
+2025-05-30 20:09:05,935 - src.trainers.train - DEBUG - train.py:283 - load_processed_data - Files in data directory 'C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed': ['adjacency_matrix_enhanced.png', 'adj_matrix_enhanced.npy', 'connection_analysis.png', 'dataset_sizes.png', 'feature_cols.pkl', 'model_config.pkl', 'scalers_enhanced.pkl', 'stations_with_features.csv', 'station_locations.png', 'test_enhanced.pkl', 'train_enhanced.csv', 'train_enhanced.pkl', 'validate_data.py', 'validation_log_20250528_233738.txt', 'validation_log_20250529_000315.txt', 'validation_log_20250529_000451.txt', 'valid_enhanced.pkl']
+2025-05-30 20:09:06,784 - src.trainers.train - INFO - train.py:331 - load_processed_data - Loaded train data - X: (291862, 43), Y: (291862, 1)
+2025-05-30 20:09:06,785 - src.trainers.train - INFO - train.py:332 - load_processed_data - Loaded valid data - X: (103151, 43), Y: (103151, 1)
+2025-05-30 20:09:06,785 - src.trainers.train - INFO - train.py:333 - load_processed_data - Loaded test data - X: (16728, 43), Y: (16728, 1)
+2025-05-30 20:09:06,785 - src.trainers.train - INFO - train.py:334 - load_processed_data - Adjacency matrix: (12, 12), Scalers: 12 keys, Feature cols: 43
+2025-05-30 20:09:06,796 - src.trainers.train - INFO - train.py:635 - train_model - Step 1.5: Preparing time series sequences (length 24)...
+2025-05-30 20:09:06,796 - src.trainers.train - INFO - train.py:641 - train_model - Raw data is 2D, creating time series sequences...
+2025-05-30 20:09:06,797 - src.trainers.train - INFO - train.py:354 - prepare_time_series_data - Preparing time series sequences: sequence_length=24, num_stations=12
+2025-05-30 20:09:06,797 - src.trainers.train - DEBUG - train.py:357 - prepare_time_series_data - Input shapes - X: (291862, 43), Y: (291862, 1)
+2025-05-30 20:09:08,280 - src.trainers.train - INFO - train.py:397 - prepare_time_series_data - Created sequences - X: (291839, 24, 43), Y: (291839, 12, 1)
+2025-05-30 20:09:09,002 - src.trainers.train - INFO - train.py:354 - prepare_time_series_data - Preparing time series sequences: sequence_length=24, num_stations=12
+2025-05-30 20:09:09,002 - src.trainers.train - DEBUG - train.py:357 - prepare_time_series_data - Input shapes - X: (103151, 43), Y: (103151, 1)
+2025-05-30 20:09:09,587 - src.trainers.train - INFO - train.py:397 - prepare_time_series_data - Created sequences - X: (103128, 24, 43), Y: (103128, 12, 1)
+2025-05-30 20:09:09,862 - src.trainers.train - INFO - train.py:666 - train_model - After time series prep - Train X:(291839, 24, 43), Y:(291839, 12, 1); Valid X:(103128, 24, 43), Y:(103128, 12, 1)
+2025-05-30 20:09:09,862 - src.trainers.train - INFO - train.py:675 - train_model - Step 3: Creating data loaders...
+2025-05-30 20:09:09,862 - src.trainers.train - WARNING - train.py:681 - train_model - num_workers > 0 on Windows can cause issues. Setting num_workers=0.
+2025-05-30 20:09:09,862 - src.trainers.train - DEBUG - train.py:686 - train_model - Using batch_size: 32, num_workers: 0
+2025-05-30 20:09:09,862 - src.trainers.train.MultiStationDataset - DEBUG - train.py:73 - __init__ - Initialized MultiStationDataset with X_data: (291839, 24, 43), Y_data: (291839, 12, 1), num_stations_model_expects: 12
+2025-05-30 20:09:09,862 - src.trainers.train.MultiStationDataset - DEBUG - train.py:73 - __init__ - Initialized MultiStationDataset with X_data: (103128, 24, 43), Y_data: (103128, 12, 1), num_stations_model_expects: 12
+2025-05-30 20:09:09,862 - src.trainers.train - DEBUG - train.py:714 - train_model - Created train_loader (9120 batches), valid_loader (3223 batches)
+2025-05-30 20:09:09,862 - src.trainers.train - INFO - train.py:718 - train_model - Step 4: Initializing model...
+2025-05-30 20:09:10,024 - src.trainers.train - INFO - train.py:740 - train_model - Model architecture:
+PM25Model(
+  (meteo_proj): Sequential(
+    (0): Linear(in_features=30, out_features=64, bias=True)
+    (1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+    (4): Linear(in_features=64, out_features=64, bias=True)
+    (5): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (6): ReLU()
+    (7): Dropout(p=0.15, inplace=False)
+  )
+  (pm25_proj): Sequential(
+    (0): Linear(in_features=12, out_features=64, bias=True)
+    (1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+    (4): Linear(in_features=64, out_features=64, bias=True)
+    (5): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (6): ReLU()
+    (7): Dropout(p=0.15, inplace=False)
+  )
+  (initial_feature_fusion): Sequential(
+    (0): Linear(in_features=128, out_features=64, bias=True)
+    (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.3, inplace=False)
+  )
+  (multi_scale1): MultiScaleResidualBlock(
+    (fc1_small): Linear(in_features=64, out_features=16, bias=True)
+    (fc1_medium): Linear(in_features=64, out_features=32, bias=True)
+    (fc1_large): Linear(in_features=64, out_features=16, bias=True)
+    (combine): Linear(in_features=64, out_features=64, bias=True)
+    (norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (skip): Identity()
+    (act): ReLU()
+  )
+  (multi_scale2): MultiScaleResidualBlock(
+    (fc1_small): Linear(in_features=64, out_features=16, bias=True)
+    (fc1_medium): Linear(in_features=64, out_features=32, bias=True)
+    (fc1_large): Linear(in_features=64, out_features=16, bias=True)
+    (combine): Linear(in_features=64, out_features=64, bias=True)
+    (norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (skip): Identity()
+    (act): ReLU()
+  )
+  (conv_lstm_cells): ModuleList(
+    (0-2): 3 x ConvLSTMCell(
+      (ih): Linear(in_features=64, out_features=256, bias=True)
+      (hh): Linear(in_features=64, out_features=256, bias=True)
+    )
+  )
+  (lstm_dropout): Dropout(p=0.3, inplace=False)
+  (gat): GraphAttentionLayer(
+    (leakyrelu): LeakyReLU(negative_slope=0.2)
+  )
+  (output_layer): Sequential(
+    (0): Linear(in_features=64, out_features=32, bias=True)
+    (1): LayerNorm((32,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.3, inplace=False)
+    (4): Linear(in_features=32, out_features=72, bias=True)
+  )
+  (output_transform): OutputTransformation()
+  (feature_dropout): Dropout(p=0.15, inplace=False)
+  (attention_dropout): Dropout(p=0.3, inplace=False)
+  (final_dropout): Dropout(p=0.36, inplace=False)
+)
+2025-05-30 20:09:10,024 - src.trainers.train - INFO - train.py:743 - train_model - Total parameters: 148,840, Trainable: 147,304
+2025-05-30 20:09:10,024 - src.trainers.train - INFO - train.py:747 - train_model - Step 5: Setting up optimizer and scheduler...
+2025-05-30 20:09:10,024 - src.trainers.train - INFO - train.py:762 - train_model - Step 6: Setting up early stopping...
+2025-05-30 20:09:10,024 - src.trainers.train.EarlyStopping - DEBUG - train.py:181 - __init__ - Initialized EarlyStopping: patience=15, min_delta=0.0001, mode=min
+2025-05-30 20:09:10,024 - src.trainers.train - INFO - train.py:768 - train_model - Step 7: Starting training loop...
+2025-05-30 20:09:10,024 - src.trainers.train - INFO - train.py:773 - train_model - ====== Epoch 1/2 ===== LR: 5.000000e-04 =====
+2025-05-30 20:09:10,024 - src.trainers.train - INFO - train.py:415 - log_memory_stats - GPU Memory - Allocated: 0.00GB, Reserved: 0.00GB
+2025-05-30 20:09:10,146 - src.trainers.train - DEBUG - train.py:442 - train_epoch - Batch 0 - X:torch.Size([32, 24, 12, 43]), Y:torch.Size([32, 12, 1]), X_min/max: -5.90/9.86
+2025-05-30 20:09:10,152 - src.trainers.train - INFO - train.py:415 - log_memory_stats - GPU Memory - Allocated: 0.00GB, Reserved: 0.02GB
+2025-05-30 20:09:10,270 - src.trainers.train - ERROR - train.py:522 - train_epoch - Error in training epoch 1: shape '[9216, 12]' is invalid for input of size 119808
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 467, in train_epoch
+    scaled_preds = model.predict(X_batch, return_raw_scaled=True)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 418, in predict
+    predictions = self.forward(x)  # This will be unscaled if possible
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 223, in forward
+    raw_pm25_features.reshape(batch_time_stations, self.pm25_feature_size)
+RuntimeError: shape '[9216, 12]' is invalid for input of size 119808
+2025-05-30 20:09:10,270 - src.trainers.train - ERROR - train.py:841 - train_model - Error in training process: shape '[9216, 12]' is invalid for input of size 119808
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 778, in train_model
+    train_loss, train_metrics = train_epoch(
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 467, in train_epoch
+    scaled_preds = model.predict(X_batch, return_raw_scaled=True)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 418, in predict
+    predictions = self.forward(x)  # This will be unscaled if possible
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 223, in forward
+    raw_pm25_features.reshape(batch_time_stations, self.pm25_feature_size)
+RuntimeError: shape '[9216, 12]' is invalid for input of size 119808
+2025-05-30 20:09:10,466 - __main__ - ERROR - train_improved_model.py:41 - <module> - Error during training: shape '[9216, 12]' is invalid for input of size 119808
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\scripts\train_improved_model.py", line 36, in <module>
+    train_model(config_path)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 778, in train_model
+    train_loss, train_metrics = train_epoch(
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 467, in train_epoch
+    scaled_preds = model.predict(X_batch, return_raw_scaled=True)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 418, in predict
+    predictions = self.forward(x)  # This will be unscaled if possible
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 223, in forward
+    raw_pm25_features.reshape(batch_time_stations, self.pm25_feature_size)
+RuntimeError: shape '[9216, 12]' is invalid for input of size 119808
+2025-05-30 20:09:41,364 - src.trainers.train - INFO - train.py:156 - setup_logging - Logging setup complete. Level: 10. Output dir: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-05-30 20:09:41,364 - src.trainers.train - INFO - train.py:603 - train_model - Starting PM2.5 model training with config: configs/improved_model_config.yaml
+2025-05-30 20:09:41,365 - src.trainers.train - INFO - train.py:604 - train_model - Output directory: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-05-30 20:09:41,395 - src.trainers.train - INFO - train.py:608 - train_model - Using device: cuda
+2025-05-30 20:09:41,397 - src.trainers.train - INFO - train.py:610 - train_model - CUDA Device: NVIDIA GeForce RTX 3050 Laptop GPU, Version: 11.8
+2025-05-30 20:09:41,398 - src.trainers.train - INFO - train.py:617 - train_model - TensorBoard logs: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\tensorboard_logs\20250530_200941
+2025-05-30 20:09:41,406 - src.trainers.train - INFO - train.py:620 - train_model - Step 1: Loading processed data...
+2025-05-30 20:09:41,407 - src.trainers.train - INFO - train.py:271 - load_processed_data - Loading processed data from directory: data/processed/
+2025-05-30 20:09:41,407 - src.trainers.train - INFO - train.py:276 - load_processed_data - Absolute data directory: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed
+2025-05-30 20:09:41,409 - src.trainers.train - DEBUG - train.py:283 - load_processed_data - Files in data directory 'C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed': ['adjacency_matrix_enhanced.png', 'adj_matrix_enhanced.npy', 'connection_analysis.png', 'dataset_sizes.png', 'feature_cols.pkl', 'model_config.pkl', 'scalers_enhanced.pkl', 'stations_with_features.csv', 'station_locations.png', 'test_enhanced.pkl', 'train_enhanced.csv', 'train_enhanced.pkl', 'validate_data.py', 'validation_log_20250528_233738.txt', 'validation_log_20250529_000315.txt', 'validation_log_20250529_000451.txt', 'valid_enhanced.pkl']
+2025-05-30 20:09:42,257 - src.trainers.train - INFO - train.py:331 - load_processed_data - Loaded train data - X: (291862, 43), Y: (291862, 1)
+2025-05-30 20:09:42,257 - src.trainers.train - INFO - train.py:332 - load_processed_data - Loaded valid data - X: (103151, 43), Y: (103151, 1)
+2025-05-30 20:09:42,257 - src.trainers.train - INFO - train.py:333 - load_processed_data - Loaded test data - X: (16728, 43), Y: (16728, 1)
+2025-05-30 20:09:42,257 - src.trainers.train - INFO - train.py:334 - load_processed_data - Adjacency matrix: (12, 12), Scalers: 12 keys, Feature cols: 43
+2025-05-30 20:09:42,268 - src.trainers.train - INFO - train.py:635 - train_model - Step 1.5: Preparing time series sequences (length 24)...
+2025-05-30 20:09:42,269 - src.trainers.train - INFO - train.py:641 - train_model - Raw data is 2D, creating time series sequences...
+2025-05-30 20:09:42,270 - src.trainers.train - INFO - train.py:354 - prepare_time_series_data - Preparing time series sequences: sequence_length=24, num_stations=12
+2025-05-30 20:09:42,270 - src.trainers.train - DEBUG - train.py:357 - prepare_time_series_data - Input shapes - X: (291862, 43), Y: (291862, 1)
+2025-05-30 20:09:43,568 - src.trainers.train - INFO - train.py:397 - prepare_time_series_data - Created sequences - X: (291839, 24, 43), Y: (291839, 12, 1)
+2025-05-30 20:09:44,188 - src.trainers.train - INFO - train.py:354 - prepare_time_series_data - Preparing time series sequences: sequence_length=24, num_stations=12
+2025-05-30 20:09:44,188 - src.trainers.train - DEBUG - train.py:357 - prepare_time_series_data - Input shapes - X: (103151, 43), Y: (103151, 1)
+2025-05-30 20:09:44,719 - src.trainers.train - INFO - train.py:397 - prepare_time_series_data - Created sequences - X: (103128, 24, 43), Y: (103128, 12, 1)
+2025-05-30 20:09:44,936 - src.trainers.train - INFO - train.py:666 - train_model - After time series prep - Train X:(291839, 24, 43), Y:(291839, 12, 1); Valid X:(103128, 24, 43), Y:(103128, 12, 1)
+2025-05-30 20:09:44,936 - src.trainers.train - INFO - train.py:675 - train_model - Step 3: Creating data loaders...
+2025-05-30 20:09:44,936 - src.trainers.train - WARNING - train.py:681 - train_model - num_workers > 0 on Windows can cause issues. Setting num_workers=0.
+2025-05-30 20:09:44,936 - src.trainers.train - DEBUG - train.py:686 - train_model - Using batch_size: 32, num_workers: 0
+2025-05-30 20:09:44,936 - src.trainers.train.MultiStationDataset - DEBUG - train.py:73 - __init__ - Initialized MultiStationDataset with X_data: (291839, 24, 43), Y_data: (291839, 12, 1), num_stations_model_expects: 12
+2025-05-30 20:09:44,936 - src.trainers.train.MultiStationDataset - DEBUG - train.py:73 - __init__ - Initialized MultiStationDataset with X_data: (103128, 24, 43), Y_data: (103128, 12, 1), num_stations_model_expects: 12
+2025-05-30 20:09:44,936 - src.trainers.train - DEBUG - train.py:714 - train_model - Created train_loader (9120 batches), valid_loader (3223 batches)
+2025-05-30 20:09:44,936 - src.trainers.train - INFO - train.py:718 - train_model - Step 4: Initializing model...
+2025-05-30 20:09:45,083 - src.trainers.train - INFO - train.py:740 - train_model - Model architecture:
+PM25Model(
+  (meteo_proj): Sequential(
+    (0): Linear(in_features=30, out_features=64, bias=True)
+    (1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+    (4): Linear(in_features=64, out_features=64, bias=True)
+    (5): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (6): ReLU()
+    (7): Dropout(p=0.15, inplace=False)
+  )
+  (pm25_proj): Sequential(
+    (0): Linear(in_features=12, out_features=64, bias=True)
+    (1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+    (4): Linear(in_features=64, out_features=64, bias=True)
+    (5): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (6): ReLU()
+    (7): Dropout(p=0.15, inplace=False)
+  )
+  (initial_feature_fusion): Sequential(
+    (0): Linear(in_features=128, out_features=64, bias=True)
+    (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.3, inplace=False)
+  )
+  (multi_scale1): MultiScaleResidualBlock(
+    (fc1_small): Linear(in_features=64, out_features=16, bias=True)
+    (fc1_medium): Linear(in_features=64, out_features=32, bias=True)
+    (fc1_large): Linear(in_features=64, out_features=16, bias=True)
+    (combine): Linear(in_features=64, out_features=64, bias=True)
+    (norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (skip): Identity()
+    (act): ReLU()
+  )
+  (multi_scale2): MultiScaleResidualBlock(
+    (fc1_small): Linear(in_features=64, out_features=16, bias=True)
+    (fc1_medium): Linear(in_features=64, out_features=32, bias=True)
+    (fc1_large): Linear(in_features=64, out_features=16, bias=True)
+    (combine): Linear(in_features=64, out_features=64, bias=True)
+    (norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (skip): Identity()
+    (act): ReLU()
+  )
+  (conv_lstm_cells): ModuleList(
+    (0-2): 3 x ConvLSTMCell(
+      (ih): Linear(in_features=64, out_features=256, bias=True)
+      (hh): Linear(in_features=64, out_features=256, bias=True)
+    )
+  )
+  (lstm_dropout): Dropout(p=0.3, inplace=False)
+  (gat): GraphAttentionLayer(
+    (leakyrelu): LeakyReLU(negative_slope=0.2)
+  )
+  (output_layer): Sequential(
+    (0): Linear(in_features=64, out_features=32, bias=True)
+    (1): LayerNorm((32,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.3, inplace=False)
+    (4): Linear(in_features=32, out_features=72, bias=True)
+  )
+  (output_transform): OutputTransformation()
+  (feature_dropout): Dropout(p=0.15, inplace=False)
+  (attention_dropout): Dropout(p=0.3, inplace=False)
+  (final_dropout): Dropout(p=0.36, inplace=False)
+)
+2025-05-30 20:09:45,083 - src.trainers.train - INFO - train.py:743 - train_model - Total parameters: 148,840, Trainable: 147,304
+2025-05-30 20:09:45,083 - src.trainers.train - INFO - train.py:747 - train_model - Step 5: Setting up optimizer and scheduler...
+2025-05-30 20:09:45,083 - src.trainers.train - INFO - train.py:762 - train_model - Step 6: Setting up early stopping...
+2025-05-30 20:09:45,083 - src.trainers.train.EarlyStopping - DEBUG - train.py:181 - __init__ - Initialized EarlyStopping: patience=15, min_delta=0.0001, mode=min
+2025-05-30 20:09:45,083 - src.trainers.train - INFO - train.py:768 - train_model - Step 7: Starting training loop...
+2025-05-30 20:09:45,083 - src.trainers.train - INFO - train.py:773 - train_model - ====== Epoch 1/2 ===== LR: 5.000000e-04 =====
+2025-05-30 20:09:45,083 - src.trainers.train - INFO - train.py:415 - log_memory_stats - GPU Memory - Allocated: 0.00GB, Reserved: 0.00GB
+2025-05-30 20:09:45,194 - src.trainers.train - DEBUG - train.py:442 - train_epoch - Batch 0 - X:torch.Size([32, 24, 12, 43]), Y:torch.Size([32, 12, 1]), X_min/max: -5.43/9.94
+2025-05-30 20:09:45,198 - src.trainers.train - INFO - train.py:415 - log_memory_stats - GPU Memory - Allocated: 0.00GB, Reserved: 0.02GB
+2025-05-30 20:09:45,299 - src.trainers.train - ERROR - train.py:522 - train_epoch - Error in training epoch 1: shape '[9216, 12]' is invalid for input of size 119808
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 467, in train_epoch
+    scaled_preds = model.predict(X_batch, return_raw_scaled=True)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 418, in predict
+    predictions = self.forward(x)  # This will be unscaled if possible
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 223, in forward
+    raw_pm25_features.reshape(batch_time_stations, self.pm25_feature_size)
+RuntimeError: shape '[9216, 12]' is invalid for input of size 119808
+2025-05-30 20:09:45,312 - src.trainers.train - ERROR - train.py:841 - train_model - Error in training process: shape '[9216, 12]' is invalid for input of size 119808
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 778, in train_model
+    train_loss, train_metrics = train_epoch(
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 467, in train_epoch
+    scaled_preds = model.predict(X_batch, return_raw_scaled=True)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 418, in predict
+    predictions = self.forward(x)  # This will be unscaled if possible
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 223, in forward
+    raw_pm25_features.reshape(batch_time_stations, self.pm25_feature_size)
+RuntimeError: shape '[9216, 12]' is invalid for input of size 119808
+2025-05-30 20:09:45,482 - __main__ - ERROR - train_improved_model.py:41 - <module> - Error during training: shape '[9216, 12]' is invalid for input of size 119808
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\scripts\train_improved_model.py", line 36, in <module>
+    train_model(config_path)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 778, in train_model
+    train_loss, train_metrics = train_epoch(
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 467, in train_epoch
+    scaled_preds = model.predict(X_batch, return_raw_scaled=True)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 418, in predict
+    predictions = self.forward(x)  # This will be unscaled if possible
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 223, in forward
+    raw_pm25_features.reshape(batch_time_stations, self.pm25_feature_size)
+RuntimeError: shape '[9216, 12]' is invalid for input of size 119808
+2025-05-30 20:20:34,355 - src.trainers.train - INFO - train.py:156 - setup_logging - Logging setup complete. Level: 10. Output dir: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-05-30 20:20:34,356 - src.trainers.train - INFO - train.py:603 - train_model - Starting PM2.5 model training with config: configs/improved_model_config.yaml
+2025-05-30 20:20:34,356 - src.trainers.train - INFO - train.py:604 - train_model - Output directory: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-05-30 20:20:34,383 - src.trainers.train - INFO - train.py:608 - train_model - Using device: cuda
+2025-05-30 20:20:34,385 - src.trainers.train - INFO - train.py:610 - train_model - CUDA Device: NVIDIA GeForce RTX 3050 Laptop GPU, Version: 11.8
+2025-05-30 20:20:34,385 - src.trainers.train - INFO - train.py:617 - train_model - TensorBoard logs: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\tensorboard_logs\20250530_202034
+2025-05-30 20:20:34,394 - src.trainers.train - INFO - train.py:620 - train_model - Step 1: Loading processed data...
+2025-05-30 20:20:34,394 - src.trainers.train - INFO - train.py:271 - load_processed_data - Loading processed data from directory: data/processed/
+2025-05-30 20:20:34,395 - src.trainers.train - INFO - train.py:276 - load_processed_data - Absolute data directory: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed
+2025-05-30 20:20:34,396 - src.trainers.train - DEBUG - train.py:283 - load_processed_data - Files in data directory 'C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed': ['adjacency_matrix_enhanced.png', 'adj_matrix_enhanced.npy', 'connection_analysis.png', 'dataset_sizes.png', 'feature_cols.pkl', 'model_config.pkl', 'scalers_enhanced.pkl', 'stations_with_features.csv', 'station_locations.png', 'test_enhanced.pkl', 'train_enhanced.csv', 'train_enhanced.pkl', 'validate_data.py', 'validation_log_20250528_233738.txt', 'validation_log_20250529_000315.txt', 'validation_log_20250529_000451.txt', 'valid_enhanced.pkl']
+2025-05-30 20:20:35,257 - src.trainers.train - INFO - train.py:331 - load_processed_data - Loaded train data - X: (291862, 43), Y: (291862, 1)
+2025-05-30 20:20:35,258 - src.trainers.train - INFO - train.py:332 - load_processed_data - Loaded valid data - X: (103151, 43), Y: (103151, 1)
+2025-05-30 20:20:35,258 - src.trainers.train - INFO - train.py:333 - load_processed_data - Loaded test data - X: (16728, 43), Y: (16728, 1)
+2025-05-30 20:20:35,258 - src.trainers.train - INFO - train.py:334 - load_processed_data - Adjacency matrix: (12, 12), Scalers: 12 keys, Feature cols: 43
+2025-05-30 20:20:35,269 - src.trainers.train - INFO - train.py:635 - train_model - Step 1.5: Preparing time series sequences (length 24)...
+2025-05-30 20:20:35,270 - src.trainers.train - INFO - train.py:641 - train_model - Raw data is 2D, creating time series sequences...
+2025-05-30 20:20:35,270 - src.trainers.train - INFO - train.py:354 - prepare_time_series_data - Preparing time series sequences: sequence_length=24, num_stations=12
+2025-05-30 20:20:35,271 - src.trainers.train - DEBUG - train.py:357 - prepare_time_series_data - Input shapes - X: (291862, 43), Y: (291862, 1)
+2025-05-30 20:20:36,739 - src.trainers.train - INFO - train.py:397 - prepare_time_series_data - Created sequences - X: (291839, 24, 43), Y: (291839, 12, 1)
+2025-05-30 20:20:37,442 - src.trainers.train - INFO - train.py:354 - prepare_time_series_data - Preparing time series sequences: sequence_length=24, num_stations=12
+2025-05-30 20:20:37,443 - src.trainers.train - DEBUG - train.py:357 - prepare_time_series_data - Input shapes - X: (103151, 43), Y: (103151, 1)
+2025-05-30 20:20:38,019 - src.trainers.train - INFO - train.py:397 - prepare_time_series_data - Created sequences - X: (103128, 24, 43), Y: (103128, 12, 1)
+2025-05-30 20:20:38,295 - src.trainers.train - INFO - train.py:666 - train_model - After time series prep - Train X:(291839, 24, 43), Y:(291839, 12, 1); Valid X:(103128, 24, 43), Y:(103128, 12, 1)
+2025-05-30 20:20:38,295 - src.trainers.train - INFO - train.py:675 - train_model - Step 3: Creating data loaders...
+2025-05-30 20:20:38,303 - src.trainers.train - WARNING - train.py:681 - train_model - num_workers > 0 on Windows can cause issues. Setting num_workers=0.
+2025-05-30 20:20:38,303 - src.trainers.train - DEBUG - train.py:686 - train_model - Using batch_size: 32, num_workers: 0
+2025-05-30 20:20:38,303 - src.trainers.train.MultiStationDataset - DEBUG - train.py:73 - __init__ - Initialized MultiStationDataset with X_data: (291839, 24, 43), Y_data: (291839, 12, 1), num_stations_model_expects: 12
+2025-05-30 20:20:38,303 - src.trainers.train.MultiStationDataset - DEBUG - train.py:73 - __init__ - Initialized MultiStationDataset with X_data: (103128, 24, 43), Y_data: (103128, 12, 1), num_stations_model_expects: 12
+2025-05-30 20:20:38,303 - src.trainers.train - DEBUG - train.py:714 - train_model - Created train_loader (9120 batches), valid_loader (3223 batches)
+2025-05-30 20:20:38,303 - src.trainers.train - INFO - train.py:718 - train_model - Step 4: Initializing model...
+2025-05-30 20:20:38,496 - src.trainers.train - INFO - train.py:740 - train_model - Model architecture:
+PM25Model(
+  (meteo_proj): Sequential(
+    (0): Linear(in_features=30, out_features=64, bias=True)
+    (1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+    (4): Linear(in_features=64, out_features=64, bias=True)
+    (5): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (6): ReLU()
+    (7): Dropout(p=0.15, inplace=False)
+  )
+  (pm25_proj): Sequential(
+    (0): Linear(in_features=12, out_features=64, bias=True)
+    (1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+    (4): Linear(in_features=64, out_features=64, bias=True)
+    (5): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (6): ReLU()
+    (7): Dropout(p=0.15, inplace=False)
+  )
+  (initial_feature_fusion): Sequential(
+    (0): Linear(in_features=128, out_features=64, bias=True)
+    (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.3, inplace=False)
+  )
+  (multi_scale1): MultiScaleResidualBlock(
+    (fc1_small): Linear(in_features=64, out_features=16, bias=True)
+    (fc1_medium): Linear(in_features=64, out_features=32, bias=True)
+    (fc1_large): Linear(in_features=64, out_features=16, bias=True)
+    (combine): Linear(in_features=64, out_features=64, bias=True)
+    (norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (skip): Identity()
+    (act): ReLU()
+  )
+  (multi_scale2): MultiScaleResidualBlock(
+    (fc1_small): Linear(in_features=64, out_features=16, bias=True)
+    (fc1_medium): Linear(in_features=64, out_features=32, bias=True)
+    (fc1_large): Linear(in_features=64, out_features=16, bias=True)
+    (combine): Linear(in_features=64, out_features=64, bias=True)
+    (norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (skip): Identity()
+    (act): ReLU()
+  )
+  (conv_lstm_cells): ModuleList(
+    (0-2): 3 x ConvLSTMCell(
+      (ih): Linear(in_features=64, out_features=256, bias=True)
+      (hh): Linear(in_features=64, out_features=256, bias=True)
+    )
+  )
+  (lstm_dropout): Dropout(p=0.3, inplace=False)
+  (gat): GraphAttentionLayer(
+    (leakyrelu): LeakyReLU(negative_slope=0.2)
+  )
+  (output_layer): Sequential(
+    (0): Linear(in_features=64, out_features=32, bias=True)
+    (1): LayerNorm((32,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.3, inplace=False)
+    (4): Linear(in_features=32, out_features=72, bias=True)
+  )
+  (output_transform): OutputTransformation()
+  (feature_dropout): Dropout(p=0.15, inplace=False)
+  (attention_dropout): Dropout(p=0.3, inplace=False)
+  (final_dropout): Dropout(p=0.36, inplace=False)
+)
+2025-05-30 20:20:38,496 - src.trainers.train - INFO - train.py:743 - train_model - Total parameters: 148,840, Trainable: 147,304
+2025-05-30 20:20:38,496 - src.trainers.train - INFO - train.py:747 - train_model - Step 5: Setting up optimizer and scheduler...
+2025-05-30 20:20:38,496 - src.trainers.train - INFO - train.py:762 - train_model - Step 6: Setting up early stopping...
+2025-05-30 20:20:38,496 - src.trainers.train.EarlyStopping - DEBUG - train.py:181 - __init__ - Initialized EarlyStopping: patience=15, min_delta=0.0001, mode=min
+2025-05-30 20:20:38,496 - src.trainers.train - INFO - train.py:768 - train_model - Step 7: Starting training loop...
+2025-05-30 20:20:38,496 - src.trainers.train - INFO - train.py:773 - train_model - ====== Epoch 1/2 ===== LR: 5.000000e-04 =====
+2025-05-30 20:20:38,496 - src.trainers.train - INFO - train.py:415 - log_memory_stats - GPU Memory - Allocated: 0.00GB, Reserved: 0.00GB
+2025-05-30 20:20:38,607 - src.trainers.train - DEBUG - train.py:442 - train_epoch - Batch 0 - X:torch.Size([32, 24, 12, 43]), Y:torch.Size([32, 12, 1]), X_min/max: -7.06/12.46
+2025-05-30 20:20:38,612 - src.trainers.train - INFO - train.py:415 - log_memory_stats - GPU Memory - Allocated: 0.00GB, Reserved: 0.02GB
+2025-05-30 20:20:38,814 - src.trainers.train - ERROR - train.py:522 - train_epoch - Error in training epoch 1: shape '[9216, 12]' is invalid for input of size 119808
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 467, in train_epoch
+    scaled_preds = model.predict(X_batch, return_raw_scaled=True)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 418, in predict
+    predictions = self.forward(x)  # This will be unscaled if possible
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 223, in forward
+    raw_pm25_features.reshape(batch_time_stations, self.pm25_feature_size)
+RuntimeError: shape '[9216, 12]' is invalid for input of size 119808
+2025-05-30 20:20:38,816 - src.trainers.train - ERROR - train.py:841 - train_model - Error in training process: shape '[9216, 12]' is invalid for input of size 119808
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 778, in train_model
+    train_loss, train_metrics = train_epoch(
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 467, in train_epoch
+    scaled_preds = model.predict(X_batch, return_raw_scaled=True)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 418, in predict
+    predictions = self.forward(x)  # This will be unscaled if possible
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 223, in forward
+    raw_pm25_features.reshape(batch_time_stations, self.pm25_feature_size)
+RuntimeError: shape '[9216, 12]' is invalid for input of size 119808
+2025-05-30 20:20:38,978 - __main__ - ERROR - train_improved_model.py:41 - <module> - Error during training: shape '[9216, 12]' is invalid for input of size 119808
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\scripts\train_improved_model.py", line 36, in <module>
+    train_model(config_path)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 778, in train_model
+    train_loss, train_metrics = train_epoch(
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 467, in train_epoch
+    scaled_preds = model.predict(X_batch, return_raw_scaled=True)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 418, in predict
+    predictions = self.forward(x)  # This will be unscaled if possible
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 223, in forward
+    raw_pm25_features.reshape(batch_time_stations, self.pm25_feature_size)
+RuntimeError: shape '[9216, 12]' is invalid for input of size 119808
+2025-05-30 20:25:53,482 - src.trainers.train - INFO - train.py:156 - setup_logging - Logging setup complete. Level: 10. Output dir: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-05-30 20:25:53,482 - src.trainers.train - INFO - train.py:603 - train_model - Starting PM2.5 model training with config: configs/improved_model_config.yaml
+2025-05-30 20:25:53,482 - src.trainers.train - INFO - train.py:604 - train_model - Output directory: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-05-30 20:25:53,513 - src.trainers.train - INFO - train.py:608 - train_model - Using device: cuda
+2025-05-30 20:25:53,514 - src.trainers.train - INFO - train.py:610 - train_model - CUDA Device: NVIDIA GeForce RTX 3050 Laptop GPU, Version: 11.8
+2025-05-30 20:25:53,514 - src.trainers.train - INFO - train.py:617 - train_model - TensorBoard logs: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\tensorboard_logs\20250530_202553
+2025-05-30 20:25:53,524 - src.trainers.train - INFO - train.py:620 - train_model - Step 1: Loading processed data...
+2025-05-30 20:25:53,524 - src.trainers.train - INFO - train.py:271 - load_processed_data - Loading processed data from directory: data/processed/
+2025-05-30 20:25:53,525 - src.trainers.train - INFO - train.py:276 - load_processed_data - Absolute data directory: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed
+2025-05-30 20:25:53,525 - src.trainers.train - DEBUG - train.py:283 - load_processed_data - Files in data directory 'C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed': ['adjacency_matrix_enhanced.png', 'adj_matrix_enhanced.npy', 'connection_analysis.png', 'dataset_sizes.png', 'feature_cols.pkl', 'model_config.pkl', 'scalers_enhanced.pkl', 'stations_with_features.csv', 'station_locations.png', 'test_enhanced.pkl', 'train_enhanced.csv', 'train_enhanced.pkl', 'validate_data.py', 'validation_log_20250528_233738.txt', 'validation_log_20250529_000315.txt', 'validation_log_20250529_000451.txt', 'valid_enhanced.pkl']
+2025-05-30 20:25:54,402 - src.trainers.train - INFO - train.py:331 - load_processed_data - Loaded train data - X: (291862, 43), Y: (291862, 1)
+2025-05-30 20:25:54,402 - src.trainers.train - INFO - train.py:332 - load_processed_data - Loaded valid data - X: (103151, 43), Y: (103151, 1)
+2025-05-30 20:25:54,403 - src.trainers.train - INFO - train.py:333 - load_processed_data - Loaded test data - X: (16728, 43), Y: (16728, 1)
+2025-05-30 20:25:54,403 - src.trainers.train - INFO - train.py:334 - load_processed_data - Adjacency matrix: (12, 12), Scalers: 12 keys, Feature cols: 43
+2025-05-30 20:25:54,411 - src.trainers.train - INFO - train.py:635 - train_model - Step 1.5: Preparing time series sequences (length 24)...
+2025-05-30 20:25:54,412 - src.trainers.train - INFO - train.py:641 - train_model - Raw data is 2D, creating time series sequences...
+2025-05-30 20:25:54,412 - src.trainers.train - INFO - train.py:354 - prepare_time_series_data - Preparing time series sequences: sequence_length=24, num_stations=12
+2025-05-30 20:25:54,413 - src.trainers.train - DEBUG - train.py:357 - prepare_time_series_data - Input shapes - X: (291862, 43), Y: (291862, 1)
+2025-05-30 20:25:55,851 - src.trainers.train - INFO - train.py:397 - prepare_time_series_data - Created sequences - X: (291839, 24, 43), Y: (291839, 12, 1)
+2025-05-30 20:25:56,500 - src.trainers.train - INFO - train.py:354 - prepare_time_series_data - Preparing time series sequences: sequence_length=24, num_stations=12
+2025-05-30 20:25:56,501 - src.trainers.train - DEBUG - train.py:357 - prepare_time_series_data - Input shapes - X: (103151, 43), Y: (103151, 1)
+2025-05-30 20:25:57,100 - src.trainers.train - INFO - train.py:397 - prepare_time_series_data - Created sequences - X: (103128, 24, 43), Y: (103128, 12, 1)
+2025-05-30 20:25:57,361 - src.trainers.train - INFO - train.py:666 - train_model - After time series prep - Train X:(291839, 24, 43), Y:(291839, 12, 1); Valid X:(103128, 24, 43), Y:(103128, 12, 1)
+2025-05-30 20:25:57,363 - src.trainers.train - INFO - train.py:675 - train_model - Step 3: Creating data loaders...
+2025-05-30 20:25:57,363 - src.trainers.train - WARNING - train.py:681 - train_model - num_workers > 0 on Windows can cause issues. Setting num_workers=0.
+2025-05-30 20:25:57,364 - src.trainers.train - DEBUG - train.py:686 - train_model - Using batch_size: 32, num_workers: 0
+2025-05-30 20:25:57,364 - src.trainers.train.MultiStationDataset - DEBUG - train.py:73 - __init__ - Initialized MultiStationDataset with X_data: (291839, 24, 43), Y_data: (291839, 12, 1), num_stations_model_expects: 12
+2025-05-30 20:25:57,364 - src.trainers.train.MultiStationDataset - DEBUG - train.py:73 - __init__ - Initialized MultiStationDataset with X_data: (103128, 24, 43), Y_data: (103128, 12, 1), num_stations_model_expects: 12
+2025-05-30 20:25:57,365 - src.trainers.train - DEBUG - train.py:714 - train_model - Created train_loader (9120 batches), valid_loader (3223 batches)
+2025-05-30 20:25:57,365 - src.trainers.train - INFO - train.py:718 - train_model - Step 4: Initializing model...
+2025-05-30 20:25:57,537 - src.trainers.train - INFO - train.py:740 - train_model - Model architecture:
+PM25Model(
+  (meteo_proj): Sequential(
+    (0): Linear(in_features=30, out_features=64, bias=True)
+    (1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+    (4): Linear(in_features=64, out_features=64, bias=True)
+    (5): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (6): ReLU()
+    (7): Dropout(p=0.15, inplace=False)
+  )
+  (pm25_proj): Sequential(
+    (0): Linear(in_features=13, out_features=64, bias=True)
+    (1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+    (4): Linear(in_features=64, out_features=64, bias=True)
+    (5): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (6): ReLU()
+    (7): Dropout(p=0.15, inplace=False)
+  )
+  (initial_feature_fusion): Sequential(
+    (0): Linear(in_features=128, out_features=64, bias=True)
+    (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.3, inplace=False)
+  )
+  (multi_scale1): MultiScaleResidualBlock(
+    (fc1_small): Linear(in_features=64, out_features=16, bias=True)
+    (fc1_medium): Linear(in_features=64, out_features=32, bias=True)
+    (fc1_large): Linear(in_features=64, out_features=16, bias=True)
+    (combine): Linear(in_features=64, out_features=64, bias=True)
+    (norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (skip): Identity()
+    (act): ReLU()
+  )
+  (multi_scale2): MultiScaleResidualBlock(
+    (fc1_small): Linear(in_features=64, out_features=16, bias=True)
+    (fc1_medium): Linear(in_features=64, out_features=32, bias=True)
+    (fc1_large): Linear(in_features=64, out_features=16, bias=True)
+    (combine): Linear(in_features=64, out_features=64, bias=True)
+    (norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (skip): Identity()
+    (act): ReLU()
+  )
+  (conv_lstm_cells): ModuleList(
+    (0-2): 3 x ConvLSTMCell(
+      (ih): Linear(in_features=64, out_features=256, bias=True)
+      (hh): Linear(in_features=64, out_features=256, bias=True)
+    )
+  )
+  (lstm_dropout): Dropout(p=0.3, inplace=False)
+  (gat): GraphAttentionLayer(
+    (leakyrelu): LeakyReLU(negative_slope=0.2)
+  )
+  (output_layer): Sequential(
+    (0): Linear(in_features=64, out_features=32, bias=True)
+    (1): LayerNorm((32,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.3, inplace=False)
+    (4): Linear(in_features=32, out_features=72, bias=True)
+  )
+  (output_transform): OutputTransformation()
+  (feature_dropout): Dropout(p=0.15, inplace=False)
+  (attention_dropout): Dropout(p=0.3, inplace=False)
+  (final_dropout): Dropout(p=0.36, inplace=False)
+)
+2025-05-30 20:25:57,540 - src.trainers.train - INFO - train.py:743 - train_model - Total parameters: 148,904, Trainable: 147,368
+2025-05-30 20:25:57,540 - src.trainers.train - INFO - train.py:747 - train_model - Step 5: Setting up optimizer and scheduler...
+2025-05-30 20:25:57,541 - src.trainers.train - INFO - train.py:762 - train_model - Step 6: Setting up early stopping...
+2025-05-30 20:25:57,541 - src.trainers.train.EarlyStopping - DEBUG - train.py:181 - __init__ - Initialized EarlyStopping: patience=15, min_delta=0.0001, mode=min
+2025-05-30 20:25:57,542 - src.trainers.train - INFO - train.py:768 - train_model - Step 7: Starting training loop...
+2025-05-30 20:25:57,542 - src.trainers.train - INFO - train.py:773 - train_model - ====== Epoch 1/2 ===== LR: 5.000000e-04 =====
+2025-05-30 20:25:57,543 - src.trainers.train - INFO - train.py:415 - log_memory_stats - GPU Memory - Allocated: 0.00GB, Reserved: 0.00GB
+2025-05-30 20:25:57,663 - src.trainers.train - DEBUG - train.py:442 - train_epoch - Batch 0 - X:torch.Size([32, 24, 12, 43]), Y:torch.Size([32, 12, 1]), X_min/max: -4.66/9.69
+2025-05-30 20:25:57,667 - src.trainers.train - INFO - train.py:415 - log_memory_stats - GPU Memory - Allocated: 0.00GB, Reserved: 0.02GB
+2025-05-30 20:26:05,780 - src.trainers.train - ERROR - train.py:522 - train_epoch - Error in training epoch 1: [enforce fail at C:\cb\pytorch_1000000000000\work\c10\core\impl\alloc_cpu.cpp:72] data. DefaultCPUAllocator: not enough memory: you tried to allocate 1585152 bytes.
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 435, in train_epoch
+    for batch_idx, (X_batch, Y_batch) in enumerate(
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\tqdm\std.py", line 1181, in __iter__
+    for obj in iterable:
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\dataloader.py", line 634, in __next__
+    data = self._next_data()
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\dataloader.py", line 678, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\fetch.py", line 54, in fetch
+    return self.collate_fn(data)
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\collate.py", line 264, in default_collate
+    return collate(batch, collate_fn_map=default_collate_fn_map)
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\collate.py", line 142, in collate
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\collate.py", line 142, in <listcomp>
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\collate.py", line 119, in collate
+    return collate_fn_map[elem_type](batch, collate_fn_map=collate_fn_map)
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\collate.py", line 162, in collate_tensor_fn
+    return torch.stack(batch, 0, out=out)
+RuntimeError: [enforce fail at C:\cb\pytorch_1000000000000\work\c10\core\impl\alloc_cpu.cpp:72] data. DefaultCPUAllocator: not enough memory: you tried to allocate 1585152 bytes.
+2025-05-30 20:26:05,785 - src.trainers.train - ERROR - train.py:841 - train_model - Error in training process: [enforce fail at C:\cb\pytorch_1000000000000\work\c10\core\impl\alloc_cpu.cpp:72] data. DefaultCPUAllocator: not enough memory: you tried to allocate 1585152 bytes.
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 778, in train_model
+    train_loss, train_metrics = train_epoch(
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 435, in train_epoch
+    for batch_idx, (X_batch, Y_batch) in enumerate(
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\tqdm\std.py", line 1181, in __iter__
+    for obj in iterable:
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\dataloader.py", line 634, in __next__
+    data = self._next_data()
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\dataloader.py", line 678, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\fetch.py", line 54, in fetch
+    return self.collate_fn(data)
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\collate.py", line 264, in default_collate
+    return collate(batch, collate_fn_map=default_collate_fn_map)
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\collate.py", line 142, in collate
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\collate.py", line 142, in <listcomp>
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\collate.py", line 119, in collate
+    return collate_fn_map[elem_type](batch, collate_fn_map=collate_fn_map)
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\collate.py", line 162, in collate_tensor_fn
+    return torch.stack(batch, 0, out=out)
+RuntimeError: [enforce fail at C:\cb\pytorch_1000000000000\work\c10\core\impl\alloc_cpu.cpp:72] data. DefaultCPUAllocator: not enough memory: you tried to allocate 1585152 bytes.
+2025-05-30 20:26:05,949 - __main__ - ERROR - train_improved_model.py:41 - <module> - Error during training: [enforce fail at C:\cb\pytorch_1000000000000\work\c10\core\impl\alloc_cpu.cpp:72] data. DefaultCPUAllocator: not enough memory: you tried to allocate 1585152 bytes.
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\scripts\train_improved_model.py", line 36, in <module>
+    train_model(config_path)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 778, in train_model
+    train_loss, train_metrics = train_epoch(
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 435, in train_epoch
+    for batch_idx, (X_batch, Y_batch) in enumerate(
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\tqdm\std.py", line 1181, in __iter__
+    for obj in iterable:
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\dataloader.py", line 634, in __next__
+    data = self._next_data()
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\dataloader.py", line 678, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\fetch.py", line 54, in fetch
+    return self.collate_fn(data)
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\collate.py", line 264, in default_collate
+    return collate(batch, collate_fn_map=default_collate_fn_map)
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\collate.py", line 142, in collate
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\collate.py", line 142, in <listcomp>
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\collate.py", line 119, in collate
+    return collate_fn_map[elem_type](batch, collate_fn_map=collate_fn_map)
+  File "C:\Users\oguzhan\anaconda3\envs\pytorch\lib\site-packages\torch\utils\data\_utils\collate.py", line 162, in collate_tensor_fn
+    return torch.stack(batch, 0, out=out)
+RuntimeError: [enforce fail at C:\cb\pytorch_1000000000000\work\c10\core\impl\alloc_cpu.cpp:72] data. DefaultCPUAllocator: not enough memory: you tried to allocate 1585152 bytes.
+2025-05-30 20:39:33,288 - src.trainers.train - INFO - train.py:91 - setup_logging - Logging setup. Level: 10. Output: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved/training_run.log
+2025-05-30 20:39:33,288 - src.trainers.train - INFO - train.py:437 - train_model - Starting PM2.5 model training: configs/improved_model_config.yaml, Output: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-05-30 20:39:33,323 - src.trainers.train - INFO - train.py:442 - train_model - Device: cuda (NVIDIA GeForce RTX 3050 Laptop GPU)
+2025-05-30 20:39:33,331 - src.trainers.train - INFO - train.py:450 - train_model - TensorBoard: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\tensorboard_logs\20250530_203933
+2025-05-30 20:39:33,331 - src.trainers.train - INFO - train.py:452 - train_model - Step 1: Loading processed data...
+2025-05-30 20:39:33,331 - src.trainers.train - INFO - train.py:187 - load_processed_data - Loading processed data from: data/processed/
+2025-05-30 20:39:33,331 - src.trainers.train - INFO - train.py:193 - load_processed_data - Absolute data dir: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed
+2025-05-30 20:39:33,334 - src.trainers.train - DEBUG - train.py:196 - load_processed_data - Files in data dir 'C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed': ['adjacency_matrix_enhanced.png', 'adj_matrix_enhanced.npy', 'connection_analysis.png', 'dataset_sizes.png', 'feature_cols.pkl', 'model_config.pkl', 'scalers_enhanced.pkl', 'stations_with_features.csv', 'station_locations.png', 'test_enhanced.pkl', 'train_enhanced.csv', 'train_enhanced.pkl', 'validate_data.py', 'validation_log_20250528_233738.txt', 'validation_log_20250529_000315.txt', 'validation_log_20250529_000451.txt', 'valid_enhanced.pkl']
+2025-05-30 20:39:33,491 - src.trainers.train - INFO - train.py:236 - load_processed_data - Loaded train - X:(291862, 43), Y:(291862, 1)
+2025-05-30 20:39:33,491 - src.trainers.train - INFO - train.py:238 - load_processed_data - Adj matrix: (12, 12), Scalers: 12 keys, Feature cols: 43
+2025-05-30 20:39:33,507 - src.trainers.train - INFO - train.py:462 - train_model - Step 1.5: Preparing time series sequences (len 24)...
+2025-05-30 20:39:33,507 - src.trainers.train - INFO - train.py:254 - prepare_time_series_data - Preparing time series: seq_len=24, num_stations=12
+2025-05-30 20:39:33,507 - src.trainers.train - DEBUG - train.py:257 - prepare_time_series_data - Input X:(291862, 43), Y:(291862, 1)
+2025-05-30 20:39:34,838 - src.trainers.train - INFO - train.py:287 - prepare_time_series_data - Created sequences - X: (291839, 24, 43), Y: (291839, 12, 1)
+2025-05-30 20:39:35,546 - src.trainers.train - INFO - train.py:254 - prepare_time_series_data - Preparing time series: seq_len=24, num_stations=12
+2025-05-30 20:39:35,546 - src.trainers.train - DEBUG - train.py:257 - prepare_time_series_data - Input X:(103151, 43), Y:(103151, 1)
+2025-05-30 20:39:36,104 - src.trainers.train - INFO - train.py:287 - prepare_time_series_data - Created sequences - X: (103128, 24, 43), Y: (103128, 12, 1)
+2025-05-30 20:39:36,364 - src.trainers.train - INFO - train.py:478 - train_model - Data shapes after seq prep - Train X:(291839, 24, 43) Y:(291839, 12, 1); Valid X:(103128, 24, 43) Y:(103128, 12, 1)
+2025-05-30 20:39:36,373 - src.trainers.train - INFO - train.py:484 - train_model - Step 3: Creating data loaders...
+2025-05-30 20:39:36,373 - src.trainers.train - WARNING - train.py:488 - train_model - num_workers>0 on Win. Setting to 0.
+2025-05-30 20:39:36,373 - src.trainers.train - DEBUG - train.py:490 - train_model - Batch size: 32, Num workers: 0
+2025-05-30 20:39:36,373 - src.trainers.train.MultiStationDataset - DEBUG - train.py:38 - __init__ - Init MultiStationDataset: X:(291839, 24, 43), Y:(291839, 12, 1), num_stations_model_expects:12
+2025-05-30 20:39:36,374 - src.trainers.train.MultiStationDataset - DEBUG - train.py:38 - __init__ - Init MultiStationDataset: X:(103128, 24, 43), Y:(103128, 12, 1), num_stations_model_expects:12
+2025-05-30 20:39:36,374 - src.trainers.train - DEBUG - train.py:515 - train_model - Loaders created: Train batches=9120, Valid batches=3223
+2025-05-30 20:39:36,375 - src.trainers.train - INFO - train.py:519 - train_model - Step 4: Initializing model...
+2025-05-30 20:39:36,390 - src.trainers.train - ERROR - train.py:613 - train_model - Error in training: __init__() got an unexpected keyword argument 'num_heads'
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 530, in train_model
+    model = PM25Model(
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 154, in __init__
+    self.gat = GraphAttentionLayer(
+TypeError: __init__() got an unexpected keyword argument 'num_heads'
+2025-05-30 20:39:36,393 - __main__ - ERROR - train_improved_model.py:41 - <module> - Error during training: __init__() got an unexpected keyword argument 'num_heads'
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\scripts\train_improved_model.py", line 36, in <module>
+    train_model(config_path)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 530, in train_model
+    model = PM25Model(
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 154, in __init__
+    self.gat = GraphAttentionLayer(
+TypeError: __init__() got an unexpected keyword argument 'num_heads'
+2025-05-30 20:40:24,496 - src.trainers.train - INFO - train.py:91 - setup_logging - Logging setup. Level: 10. Output: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved/training_run.log
+2025-05-30 20:40:24,497 - src.trainers.train - INFO - train.py:437 - train_model - Starting PM2.5 model training: configs/improved_model_config.yaml, Output: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-05-30 20:40:24,527 - src.trainers.train - INFO - train.py:442 - train_model - Device: cuda (NVIDIA GeForce RTX 3050 Laptop GPU)
+2025-05-30 20:40:24,535 - src.trainers.train - INFO - train.py:450 - train_model - TensorBoard: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\tensorboard_logs\20250530_204024
+2025-05-30 20:40:24,536 - src.trainers.train - INFO - train.py:452 - train_model - Step 1: Loading processed data...
+2025-05-30 20:40:24,536 - src.trainers.train - INFO - train.py:187 - load_processed_data - Loading processed data from: data/processed/
+2025-05-30 20:40:24,537 - src.trainers.train - INFO - train.py:193 - load_processed_data - Absolute data dir: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed
+2025-05-30 20:40:24,538 - src.trainers.train - DEBUG - train.py:196 - load_processed_data - Files in data dir 'C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed': ['adjacency_matrix_enhanced.png', 'adj_matrix_enhanced.npy', 'connection_analysis.png', 'dataset_sizes.png', 'feature_cols.pkl', 'model_config.pkl', 'scalers_enhanced.pkl', 'stations_with_features.csv', 'station_locations.png', 'test_enhanced.pkl', 'train_enhanced.csv', 'train_enhanced.pkl', 'validate_data.py', 'validation_log_20250528_233738.txt', 'validation_log_20250529_000315.txt', 'validation_log_20250529_000451.txt', 'valid_enhanced.pkl']
+2025-05-30 20:40:24,662 - src.trainers.train - INFO - train.py:236 - load_processed_data - Loaded train - X:(291862, 43), Y:(291862, 1)
+2025-05-30 20:40:24,663 - src.trainers.train - INFO - train.py:238 - load_processed_data - Adj matrix: (12, 12), Scalers: 12 keys, Feature cols: 43
+2025-05-30 20:40:24,673 - src.trainers.train - INFO - train.py:462 - train_model - Step 1.5: Preparing time series sequences (len 24)...
+2025-05-30 20:40:24,674 - src.trainers.train - INFO - train.py:254 - prepare_time_series_data - Preparing time series: seq_len=24, num_stations=12
+2025-05-30 20:40:24,674 - src.trainers.train - DEBUG - train.py:257 - prepare_time_series_data - Input X:(291862, 43), Y:(291862, 1)
+2025-05-30 20:40:25,983 - src.trainers.train - INFO - train.py:287 - prepare_time_series_data - Created sequences - X: (291839, 24, 43), Y: (291839, 12, 1)
+2025-05-30 20:40:26,586 - src.trainers.train - INFO - train.py:254 - prepare_time_series_data - Preparing time series: seq_len=24, num_stations=12
+2025-05-30 20:40:26,586 - src.trainers.train - DEBUG - train.py:257 - prepare_time_series_data - Input X:(103151, 43), Y:(103151, 1)
+2025-05-30 20:40:27,102 - src.trainers.train - INFO - train.py:287 - prepare_time_series_data - Created sequences - X: (103128, 24, 43), Y: (103128, 12, 1)
+2025-05-30 20:40:27,326 - src.trainers.train - INFO - train.py:478 - train_model - Data shapes after seq prep - Train X:(291839, 24, 43) Y:(291839, 12, 1); Valid X:(103128, 24, 43) Y:(103128, 12, 1)
+2025-05-30 20:40:27,327 - src.trainers.train - INFO - train.py:484 - train_model - Step 3: Creating data loaders...
+2025-05-30 20:40:27,327 - src.trainers.train - WARNING - train.py:488 - train_model - num_workers>0 on Win. Setting to 0.
+2025-05-30 20:40:27,328 - src.trainers.train - DEBUG - train.py:490 - train_model - Batch size: 32, Num workers: 0
+2025-05-30 20:40:27,328 - src.trainers.train.MultiStationDataset - DEBUG - train.py:38 - __init__ - Init MultiStationDataset: X:(291839, 24, 43), Y:(291839, 12, 1), num_stations_model_expects:12
+2025-05-30 20:40:27,328 - src.trainers.train.MultiStationDataset - DEBUG - train.py:38 - __init__ - Init MultiStationDataset: X:(103128, 24, 43), Y:(103128, 12, 1), num_stations_model_expects:12
+2025-05-30 20:40:27,329 - src.trainers.train - DEBUG - train.py:515 - train_model - Loaders created: Train batches=9120, Valid batches=3223
+2025-05-30 20:40:27,329 - src.trainers.train - INFO - train.py:519 - train_model - Step 4: Initializing model...
+2025-05-30 20:40:27,336 - src.trainers.train - ERROR - train.py:613 - train_model - Error in training: __init__() got an unexpected keyword argument 'station_names'
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 530, in train_model
+    model = PM25Model(
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 185, in __init__
+    self.output_transform = OutputTransformation(
+TypeError: __init__() got an unexpected keyword argument 'station_names'
+2025-05-30 20:40:27,338 - __main__ - ERROR - train_improved_model.py:41 - <module> - Error during training: __init__() got an unexpected keyword argument 'station_names'
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\scripts\train_improved_model.py", line 36, in <module>
+    train_model(config_path)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 530, in train_model
+    model = PM25Model(
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 185, in __init__
+    self.output_transform = OutputTransformation(
+TypeError: __init__() got an unexpected keyword argument 'station_names'
+2025-05-30 20:44:05,627 - src.trainers.train - INFO - train.py:91 - setup_logging - Logging setup. Level: 10. Output: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved/training_run.log
+2025-05-30 20:44:05,627 - src.trainers.train - INFO - train.py:437 - train_model - Starting PM2.5 model training: configs/improved_model_config.yaml, Output: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-05-30 20:44:05,657 - src.trainers.train - INFO - train.py:442 - train_model - Device: cuda (NVIDIA GeForce RTX 3050 Laptop GPU)
+2025-05-30 20:44:05,667 - src.trainers.train - INFO - train.py:450 - train_model - TensorBoard: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\tensorboard_logs\20250530_204405
+2025-05-30 20:44:05,667 - src.trainers.train - INFO - train.py:452 - train_model - Step 1: Loading processed data...
+2025-05-30 20:44:05,668 - src.trainers.train - INFO - train.py:187 - load_processed_data - Loading processed data from: data/processed/
+2025-05-30 20:44:05,669 - src.trainers.train - INFO - train.py:193 - load_processed_data - Absolute data dir: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed
+2025-05-30 20:44:05,669 - src.trainers.train - DEBUG - train.py:196 - load_processed_data - Files in data dir 'C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed': ['adjacency_matrix_enhanced.png', 'adj_matrix_enhanced.npy', 'connection_analysis.png', 'dataset_sizes.png', 'feature_cols.pkl', 'model_config.pkl', 'scalers_enhanced.pkl', 'stations_with_features.csv', 'station_locations.png', 'test_enhanced.pkl', 'train_enhanced.csv', 'train_enhanced.pkl', 'validate_data.py', 'validation_log_20250528_233738.txt', 'validation_log_20250529_000315.txt', 'validation_log_20250529_000451.txt', 'valid_enhanced.pkl']
+2025-05-30 20:44:05,785 - src.trainers.train - INFO - train.py:236 - load_processed_data - Loaded train - X:(291862, 43), Y:(291862, 1)
+2025-05-30 20:44:05,799 - src.trainers.train - INFO - train.py:238 - load_processed_data - Adj matrix: (12, 12), Scalers: 12 keys, Feature cols: 43
+2025-05-30 20:44:05,799 - src.trainers.train - INFO - train.py:462 - train_model - Step 1.5: Preparing time series sequences (len 24)...
+2025-05-30 20:44:05,799 - src.trainers.train - INFO - train.py:254 - prepare_time_series_data - Preparing time series: seq_len=24, num_stations=12
+2025-05-30 20:44:05,799 - src.trainers.train - DEBUG - train.py:257 - prepare_time_series_data - Input X:(291862, 43), Y:(291862, 1)
+2025-05-30 20:44:07,182 - src.trainers.train - INFO - train.py:287 - prepare_time_series_data - Created sequences - X: (291839, 24, 43), Y: (291839, 12, 1)
+2025-05-30 20:44:07,870 - src.trainers.train - INFO - train.py:254 - prepare_time_series_data - Preparing time series: seq_len=24, num_stations=12
+2025-05-30 20:44:07,870 - src.trainers.train - DEBUG - train.py:257 - prepare_time_series_data - Input X:(103151, 43), Y:(103151, 1)
+2025-05-30 20:44:08,445 - src.trainers.train - INFO - train.py:287 - prepare_time_series_data - Created sequences - X: (103128, 24, 43), Y: (103128, 12, 1)
+2025-05-30 20:44:08,709 - src.trainers.train - INFO - train.py:478 - train_model - Data shapes after seq prep - Train X:(291839, 24, 43) Y:(291839, 12, 1); Valid X:(103128, 24, 43) Y:(103128, 12, 1)
+2025-05-30 20:44:08,716 - src.trainers.train - INFO - train.py:484 - train_model - Step 3: Creating data loaders...
+2025-05-30 20:44:08,716 - src.trainers.train - WARNING - train.py:488 - train_model - num_workers>0 on Win. Setting to 0.
+2025-05-30 20:44:08,716 - src.trainers.train - DEBUG - train.py:490 - train_model - Batch size: 32, Num workers: 0
+2025-05-30 20:44:08,718 - src.trainers.train.MultiStationDataset - DEBUG - train.py:38 - __init__ - Init MultiStationDataset: X:(291839, 24, 43), Y:(291839, 12, 1), num_stations_model_expects:12
+2025-05-30 20:44:08,718 - src.trainers.train.MultiStationDataset - DEBUG - train.py:38 - __init__ - Init MultiStationDataset: X:(103128, 24, 43), Y:(103128, 12, 1), num_stations_model_expects:12
+2025-05-30 20:44:08,719 - src.trainers.train - DEBUG - train.py:515 - train_model - Loaders created: Train batches=9120, Valid batches=3223
+2025-05-30 20:44:08,719 - src.trainers.train - INFO - train.py:519 - train_model - Step 4: Initializing model...
+2025-05-30 20:44:08,734 - src.trainers.train - ERROR - train.py:613 - train_model - Error in training: __init__() got an unexpected keyword argument 'num_heads'
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 530, in train_model
+    model = PM25Model(
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 148, in __init__
+    self.gat = GraphAttentionLayer(
+TypeError: __init__() got an unexpected keyword argument 'num_heads'
+2025-05-30 20:44:08,737 - __main__ - ERROR - train_improved_model.py:41 - <module> - Error during training: __init__() got an unexpected keyword argument 'num_heads'
+Traceback (most recent call last):
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\scripts\train_improved_model.py", line 36, in <module>
+    train_model(config_path)
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\trainers\train.py", line 530, in train_model
+    model = PM25Model(
+  File "C:\Users\oguzhan\Documents\Code\python\yl_makina_02\src\models\model.py", line 148, in __init__
+    self.gat = GraphAttentionLayer(
+TypeError: __init__() got an unexpected keyword argument 'num_heads'
+2025-05-30 20:44:53,784 - src.trainers.train - INFO - train.py:91 - setup_logging - Logging setup. Level: 10. Output: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved/training_run.log
+2025-05-30 20:44:53,784 - src.trainers.train - INFO - train.py:437 - train_model - Starting PM2.5 model training: configs/improved_model_config.yaml, Output: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-05-30 20:44:53,822 - src.trainers.train - INFO - train.py:442 - train_model - Device: cuda (NVIDIA GeForce RTX 3050 Laptop GPU)
+2025-05-30 20:44:53,835 - src.trainers.train - INFO - train.py:450 - train_model - TensorBoard: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\tensorboard_logs\20250530_204453
+2025-05-30 20:44:53,836 - src.trainers.train - INFO - train.py:452 - train_model - Step 1: Loading processed data...
+2025-05-30 20:44:53,836 - src.trainers.train - INFO - train.py:187 - load_processed_data - Loading processed data from: data/processed/
+2025-05-30 20:44:53,836 - src.trainers.train - INFO - train.py:193 - load_processed_data - Absolute data dir: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed
+2025-05-30 20:44:53,837 - src.trainers.train - DEBUG - train.py:196 - load_processed_data - Files in data dir 'C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed': ['adjacency_matrix_enhanced.png', 'adj_matrix_enhanced.npy', 'connection_analysis.png', 'dataset_sizes.png', 'feature_cols.pkl', 'model_config.pkl', 'scalers_enhanced.pkl', 'stations_with_features.csv', 'station_locations.png', 'test_enhanced.pkl', 'train_enhanced.csv', 'train_enhanced.pkl', 'validate_data.py', 'validation_log_20250528_233738.txt', 'validation_log_20250529_000315.txt', 'validation_log_20250529_000451.txt', 'valid_enhanced.pkl']
+2025-05-30 20:44:53,969 - src.trainers.train - INFO - train.py:236 - load_processed_data - Loaded train - X:(291862, 43), Y:(291862, 1)
+2025-05-30 20:44:53,969 - src.trainers.train - INFO - train.py:238 - load_processed_data - Adj matrix: (12, 12), Scalers: 12 keys, Feature cols: 43
+2025-05-30 20:44:53,978 - src.trainers.train - INFO - train.py:462 - train_model - Step 1.5: Preparing time series sequences (len 24)...
+2025-05-30 20:44:53,978 - src.trainers.train - INFO - train.py:254 - prepare_time_series_data - Preparing time series: seq_len=24, num_stations=12
+2025-05-30 20:44:53,978 - src.trainers.train - DEBUG - train.py:257 - prepare_time_series_data - Input X:(291862, 43), Y:(291862, 1)
+2025-05-30 20:44:55,318 - src.trainers.train - INFO - train.py:287 - prepare_time_series_data - Created sequences - X: (291839, 24, 43), Y: (291839, 12, 1)
+2025-05-30 20:44:56,004 - src.trainers.train - INFO - train.py:254 - prepare_time_series_data - Preparing time series: seq_len=24, num_stations=12
+2025-05-30 20:44:56,004 - src.trainers.train - DEBUG - train.py:257 - prepare_time_series_data - Input X:(103151, 43), Y:(103151, 1)
+2025-05-30 20:44:56,521 - src.trainers.train - INFO - train.py:287 - prepare_time_series_data - Created sequences - X: (103128, 24, 43), Y: (103128, 12, 1)
+2025-05-30 20:44:56,752 - src.trainers.train - INFO - train.py:478 - train_model - Data shapes after seq prep - Train X:(291839, 24, 43) Y:(291839, 12, 1); Valid X:(103128, 24, 43) Y:(103128, 12, 1)
+2025-05-30 20:44:56,752 - src.trainers.train - INFO - train.py:484 - train_model - Step 3: Creating data loaders...
+2025-05-30 20:44:56,752 - src.trainers.train - WARNING - train.py:488 - train_model - num_workers>0 on Win. Setting to 0.
+2025-05-30 20:44:56,752 - src.trainers.train - DEBUG - train.py:490 - train_model - Batch size: 32, Num workers: 0
+2025-05-30 20:44:56,752 - src.trainers.train.MultiStationDataset - DEBUG - train.py:38 - __init__ - Init MultiStationDataset: X:(291839, 24, 43), Y:(291839, 12, 1), num_stations_model_expects:12
+2025-05-30 20:44:56,752 - src.trainers.train.MultiStationDataset - DEBUG - train.py:38 - __init__ - Init MultiStationDataset: X:(103128, 24, 43), Y:(103128, 12, 1), num_stations_model_expects:12
+2025-05-30 20:44:56,752 - src.trainers.train - DEBUG - train.py:515 - train_model - Loaders created: Train batches=9120, Valid batches=3223
+2025-05-30 20:44:56,752 - src.trainers.train - INFO - train.py:519 - train_model - Step 4: Initializing model...
+2025-05-30 20:44:56,955 - src.trainers.train - INFO - train.py:536 - train_model - Model architecture:
+PM25Model(
+  (meteo_proj): Sequential(
+    (0): Linear(in_features=30, out_features=64, bias=True)
+    (1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+    (4): Linear(in_features=64, out_features=64, bias=True)
+    (5): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (6): ReLU()
+    (7): Dropout(p=0.15, inplace=False)
+  )
+  (pm25_proj): Sequential(
+    (0): Linear(in_features=13, out_features=64, bias=True)
+    (1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+    (4): Linear(in_features=64, out_features=64, bias=True)
+    (5): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (6): ReLU()
+    (7): Dropout(p=0.15, inplace=False)
+  )
+  (initial_feature_fusion): Sequential(
+    (0): Linear(in_features=128, out_features=64, bias=True)
+    (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.3, inplace=False)
+  )
+  (multi_scale1): MultiScaleResidualBlock(
+    (fc1_small): Linear(in_features=64, out_features=16, bias=True)
+    (fc1_medium): Linear(in_features=64, out_features=32, bias=True)
+    (fc1_large): Linear(in_features=64, out_features=16, bias=True)
+    (combine): Linear(in_features=64, out_features=64, bias=True)
+    (norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (skip): Identity()
+    (act): ReLU()
+  )
+  (multi_scale2): MultiScaleResidualBlock(
+    (fc1_small): Linear(in_features=64, out_features=16, bias=True)
+    (fc1_medium): Linear(in_features=64, out_features=32, bias=True)
+    (fc1_large): Linear(in_features=64, out_features=16, bias=True)
+    (combine): Linear(in_features=64, out_features=64, bias=True)
+    (norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (skip): Identity()
+    (act): ReLU()
+  )
+  (conv_lstm_cells): ModuleList(
+    (0-2): 3 x ConvLSTMCell(
+      (ih): Linear(in_features=64, out_features=256, bias=True)
+      (hh): Linear(in_features=64, out_features=256, bias=True)
+    )
+  )
+  (lstm_dropout): Dropout(p=0.3, inplace=False)
+  (gat): GraphAttentionLayer(
+    (leakyrelu): LeakyReLU(negative_slope=0.2)
+  )
+  (output_layer): Sequential(
+    (0): Linear(in_features=64, out_features=32, bias=True)
+    (1): LayerNorm((32,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.3, inplace=False)
+    (4): Linear(in_features=32, out_features=72, bias=True)
+  )
+  (output_transform): OutputTransformation()
+  (feature_dropout): Dropout(p=0.15, inplace=False)
+  (attention_dropout): Dropout(p=0.3, inplace=False)
+  (final_dropout): Dropout(p=0.36, inplace=False)
+)
+2025-05-30 20:44:56,955 - src.trainers.train - INFO - train.py:537 - train_model - Params: Total 148,904, Trainable 147,368
+2025-05-30 20:44:56,955 - src.trainers.train.EarlyStopping - DEBUG - train.py:109 - __init__ - EarlyStopping init: patience=15, min_delta=0.0001, mode=min
+2025-05-30 20:44:56,955 - src.trainers.train - INFO - train.py:558 - train_model - Optimizer, Scheduler, EarlyStopping initialized.
+2025-05-30 20:44:56,955 - src.trainers.train - INFO - train.py:560 - train_model - Step 7: Starting training loop...
+2025-05-30 20:44:56,955 - src.trainers.train - INFO - train.py:563 - train_model - ====== Epoch 1/2 ===== LR: 5.0e-04 =====
+2025-05-30 20:44:57,131 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 0 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.1/51.7
+2025-05-30 20:46:53,263 - src.trainers.train - INFO - train.py:91 - setup_logging - Logging setup. Level: 10. Output: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved/training_run.log
+2025-05-30 20:46:53,264 - src.trainers.train - INFO - train.py:437 - train_model - Starting PM2.5 model training: configs/improved_model_config.yaml, Output: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-05-30 20:46:53,298 - src.trainers.train - INFO - train.py:442 - train_model - Device: cuda (NVIDIA GeForce RTX 3050 Laptop GPU)
+2025-05-30 20:46:53,306 - src.trainers.train - INFO - train.py:450 - train_model - TensorBoard: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\tensorboard_logs\20250530_204653
+2025-05-30 20:46:53,306 - src.trainers.train - INFO - train.py:452 - train_model - Step 1: Loading processed data...
+2025-05-30 20:46:53,307 - src.trainers.train - INFO - train.py:187 - load_processed_data - Loading processed data from: data/processed/
+2025-05-30 20:46:53,307 - src.trainers.train - INFO - train.py:193 - load_processed_data - Absolute data dir: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed
+2025-05-30 20:46:53,308 - src.trainers.train - DEBUG - train.py:196 - load_processed_data - Files in data dir 'C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed': ['adjacency_matrix_enhanced.png', 'adj_matrix_enhanced.npy', 'connection_analysis.png', 'dataset_sizes.png', 'feature_cols.pkl', 'model_config.pkl', 'scalers_enhanced.pkl', 'stations_with_features.csv', 'station_locations.png', 'test_enhanced.pkl', 'train_enhanced.csv', 'train_enhanced.pkl', 'validate_data.py', 'validation_log_20250528_233738.txt', 'validation_log_20250529_000315.txt', 'validation_log_20250529_000451.txt', 'valid_enhanced.pkl']
+2025-05-30 20:46:53,485 - src.trainers.train - INFO - train.py:236 - load_processed_data - Loaded train - X:(291862, 43), Y:(291862, 1)
+2025-05-30 20:46:53,485 - src.trainers.train - INFO - train.py:238 - load_processed_data - Adj matrix: (12, 12), Scalers: 12 keys, Feature cols: 43
+2025-05-30 20:46:53,494 - src.trainers.train - INFO - train.py:462 - train_model - Step 1.5: Preparing time series sequences (len 24)...
+2025-05-30 20:46:53,494 - src.trainers.train - INFO - train.py:254 - prepare_time_series_data - Preparing time series: seq_len=24, num_stations=12
+2025-05-30 20:46:53,495 - src.trainers.train - DEBUG - train.py:257 - prepare_time_series_data - Input X:(291862, 43), Y:(291862, 1)
+2025-05-30 20:46:54,848 - src.trainers.train - INFO - train.py:287 - prepare_time_series_data - Created sequences - X: (291839, 24, 43), Y: (291839, 12, 1)
+2025-05-30 20:46:55,551 - src.trainers.train - INFO - train.py:254 - prepare_time_series_data - Preparing time series: seq_len=24, num_stations=12
+2025-05-30 20:46:55,552 - src.trainers.train - DEBUG - train.py:257 - prepare_time_series_data - Input X:(103151, 43), Y:(103151, 1)
+2025-05-30 20:46:56,059 - src.trainers.train - INFO - train.py:287 - prepare_time_series_data - Created sequences - X: (103128, 24, 43), Y: (103128, 12, 1)
+2025-05-30 20:46:56,330 - src.trainers.train - INFO - train.py:478 - train_model - Data shapes after seq prep - Train X:(291839, 24, 43) Y:(291839, 12, 1); Valid X:(103128, 24, 43) Y:(103128, 12, 1)
+2025-05-30 20:46:56,331 - src.trainers.train - INFO - train.py:484 - train_model - Step 3: Creating data loaders...
+2025-05-30 20:46:56,332 - src.trainers.train - WARNING - train.py:488 - train_model - num_workers>0 on Win. Setting to 0.
+2025-05-30 20:46:56,332 - src.trainers.train - DEBUG - train.py:490 - train_model - Batch size: 32, Num workers: 0
+2025-05-30 20:46:56,332 - src.trainers.train.MultiStationDataset - DEBUG - train.py:38 - __init__ - Init MultiStationDataset: X:(291839, 24, 43), Y:(291839, 12, 1), num_stations_model_expects:12
+2025-05-30 20:46:56,333 - src.trainers.train.MultiStationDataset - DEBUG - train.py:38 - __init__ - Init MultiStationDataset: X:(103128, 24, 43), Y:(103128, 12, 1), num_stations_model_expects:12
+2025-05-30 20:46:56,333 - src.trainers.train - DEBUG - train.py:515 - train_model - Loaders created: Train batches=9120, Valid batches=3223
+2025-05-30 20:46:56,333 - src.trainers.train - INFO - train.py:519 - train_model - Step 4: Initializing model...
+2025-05-30 20:46:56,492 - src.trainers.train - INFO - train.py:536 - train_model - Model architecture:
+PM25Model(
+  (meteo_proj): Sequential(
+    (0): Linear(in_features=30, out_features=64, bias=True)
+    (1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+    (4): Linear(in_features=64, out_features=64, bias=True)
+    (5): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (6): ReLU()
+    (7): Dropout(p=0.15, inplace=False)
+  )
+  (pm25_proj): Sequential(
+    (0): Linear(in_features=13, out_features=64, bias=True)
+    (1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+    (4): Linear(in_features=64, out_features=64, bias=True)
+    (5): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (6): ReLU()
+    (7): Dropout(p=0.15, inplace=False)
+  )
+  (initial_feature_fusion): Sequential(
+    (0): Linear(in_features=128, out_features=64, bias=True)
+    (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.3, inplace=False)
+  )
+  (multi_scale1): MultiScaleResidualBlock(
+    (fc1_small): Linear(in_features=64, out_features=16, bias=True)
+    (fc1_medium): Linear(in_features=64, out_features=32, bias=True)
+    (fc1_large): Linear(in_features=64, out_features=16, bias=True)
+    (combine): Linear(in_features=64, out_features=64, bias=True)
+    (norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (skip): Identity()
+    (act): ReLU()
+  )
+  (multi_scale2): MultiScaleResidualBlock(
+    (fc1_small): Linear(in_features=64, out_features=16, bias=True)
+    (fc1_medium): Linear(in_features=64, out_features=32, bias=True)
+    (fc1_large): Linear(in_features=64, out_features=16, bias=True)
+    (combine): Linear(in_features=64, out_features=64, bias=True)
+    (norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (skip): Identity()
+    (act): ReLU()
+  )
+  (conv_lstm_cells): ModuleList(
+    (0-2): 3 x ConvLSTMCell(
+      (ih): Linear(in_features=64, out_features=256, bias=True)
+      (hh): Linear(in_features=64, out_features=256, bias=True)
+    )
+  )
+  (lstm_dropout): Dropout(p=0.3, inplace=False)
+  (gat): GraphAttentionLayer(
+    (leakyrelu): LeakyReLU(negative_slope=0.2)
+  )
+  (output_layer): Sequential(
+    (0): Linear(in_features=64, out_features=32, bias=True)
+    (1): LayerNorm((32,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.3, inplace=False)
+    (4): Linear(in_features=32, out_features=72, bias=True)
+  )
+  (output_transform): OutputTransformation()
+  (feature_dropout): Dropout(p=0.15, inplace=False)
+  (attention_dropout): Dropout(p=0.3, inplace=False)
+  (final_dropout): Dropout(p=0.36, inplace=False)
+)
+2025-05-30 20:46:56,494 - src.trainers.train - INFO - train.py:537 - train_model - Params: Total 148,904, Trainable 147,368
+2025-05-30 20:46:56,495 - src.trainers.train.EarlyStopping - DEBUG - train.py:109 - __init__ - EarlyStopping init: patience=15, min_delta=0.0001, mode=min
+2025-05-30 20:46:56,496 - src.trainers.train - INFO - train.py:558 - train_model - Optimizer, Scheduler, EarlyStopping initialized.
+2025-05-30 20:46:56,496 - src.trainers.train - INFO - train.py:560 - train_model - Step 7: Starting training loop...
+2025-05-30 20:46:56,496 - src.trainers.train - INFO - train.py:563 - train_model - ====== Epoch 1/2 ===== LR: 5.0e-04 =====
+2025-05-30 20:46:56,596 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 0 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-9.4/9.3
+2025-05-30 20:48:10,304 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-8.4/8.7
+2025-05-30 20:49:22,666 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.0/25.7
+2025-05-30 20:50:35,824 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.8/7.6
+2025-05-30 20:51:48,338 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.6/6.2
+2025-05-30 20:52:58,585 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 1000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.9/6.8
+2025-05-30 20:54:08,363 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 1200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.8/8.2
+2025-05-30 20:55:17,877 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 1400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-8.8/29.0
+2025-05-30 20:56:27,706 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 1600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.0/23.8
+2025-05-30 20:57:36,810 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 1800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.2/13.9
+2025-05-30 20:58:46,307 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 2000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.9/10.8
+2025-05-30 20:59:55,259 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 2200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.0/8.1
+2025-05-30 21:01:05,055 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 2400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.9/6.9
+2025-05-30 21:02:15,385 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 2600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.8/8.6
+2025-05-30 21:03:26,937 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 2800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.0/7.7
+2025-05-30 21:04:37,616 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 3000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.9/20.1
+2025-05-30 21:05:48,389 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 3200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.5/10.2
+2025-05-30 21:06:59,256 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 3400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.8/31.0
+2025-05-30 21:08:10,674 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 3600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.1/9.4
+2025-05-30 21:09:21,133 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 3800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-11.2/50.7
+2025-05-30 21:10:31,398 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 4000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.0/42.0
+2025-05-30 21:11:42,451 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 4200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-3.9/24.7
+2025-05-30 21:12:53,575 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 4400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.9/20.1
+2025-05-30 21:14:03,793 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 4600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.9/8.4
+2025-05-30 21:15:14,145 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 4800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-10.2/10.4
+2025-05-30 21:16:25,615 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 5000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.9/14.4
+2025-05-30 21:17:36,199 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 5200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.6/36.5
+2025-05-30 21:18:46,948 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 5400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.9/19.3
+2025-05-30 21:19:56,255 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 5600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-14.3/14.3
+2025-05-30 21:21:05,400 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 5800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.1/12.8
+2025-05-30 21:22:16,223 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 6000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-10.1/14.6
+2025-05-30 21:23:26,883 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 6200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.9/13.9
+2025-05-30 21:24:38,625 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 6400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.6/16.0
+2025-05-30 21:25:49,386 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 6600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.7/36.3
+2025-05-30 21:27:00,076 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 6800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-8.0/35.1
+2025-05-30 21:28:11,780 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 7000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.7/11.4
+2025-05-30 21:29:24,061 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 7200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.1/17.9
+2025-05-30 21:30:34,261 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 7400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.9/21.7
+2025-05-30 21:31:45,137 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 7600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.9/16.0
+2025-05-30 21:32:55,469 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 7800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.9/8.1
+2025-05-30 21:34:06,601 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 8000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.5/9.4
+2025-05-30 21:35:18,145 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 8200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.0/12.8
+2025-05-30 21:36:29,570 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 8400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.9/7.4
+2025-05-30 21:37:40,162 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 8600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.0/20.7
+2025-05-30 21:38:52,105 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 8800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.0/40.3
+2025-05-30 21:40:04,281 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 9000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.9/12.7
+2025-05-30 21:40:46,859 - src.trainers.train - INFO - train.py:364 - train_epoch - Ep 1 Train Loss:0.2658 MAE:0.2891 RMSE:0.4609
+2025-05-30 21:47:00,367 - src.trainers.train - INFO - train.py:417 - validate - Ep 1 Valid Loss:0.0436 MAE:0.0980 RMSE:0.1248
+2025-05-30 21:47:00,370 - src.trainers.train - INFO - train.py:583 - train_model - Epoch 1 Summary - Train Loss: 0.2658, Val Loss: 0.0436
+2025-05-30 21:47:00,371 - src.trainers.train - INFO - train.py:590 - train_model - New best val_loss: 0.0436. Saving to C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_best.pt
+2025-05-30 21:47:00,402 - src.trainers.train.EarlyStopping - DEBUG - train.py:114 - __call__ - ES check: val_loss=0.0436, best_score=None
+2025-05-30 21:47:00,403 - src.trainers.train.EarlyStopping - INFO - train.py:122 - __call__ - ES: Model improved. New best val_loss=0.0436. Saving to C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_checkpoint.pt
+2025-05-30 21:47:00,436 - src.trainers.train.EarlyStopping - DEBUG - train.py:153 - save_checkpoint - Checkpoint saved: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_checkpoint.pt
+2025-05-30 21:47:00,437 - src.trainers.train - INFO - train.py:563 - train_model - ====== Epoch 2/2 ===== LR: 5.0e-04 =====
+2025-05-30 21:47:00,466 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 0 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-8.1/13.6
+2025-05-30 21:48:22,305 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.8/12.4
+2025-05-30 21:49:49,628 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.5/19.0
+2025-05-30 21:51:15,621 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-8.0/14.4
+2025-05-30 21:52:43,084 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.6/13.1
+2025-05-30 21:54:08,765 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 1000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.7/5.8
+2025-05-30 21:55:34,049 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 1200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.0/13.1
+2025-05-30 21:57:00,053 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 1400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.8/12.7
+2025-05-30 21:58:28,954 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 1600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.9/18.4
+2025-05-30 21:59:58,379 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 1800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.9/7.7
+2025-05-30 22:01:25,248 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 2000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-7.4/7.7
+2025-05-30 22:02:53,507 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 2200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.8/7.4
+2025-05-30 22:04:20,206 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 2400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-11.8/23.4
+2025-05-30 22:05:48,996 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 2600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.1/12.4
+2025-05-30 22:07:17,505 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 2800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.8/37.0
+2025-05-30 22:08:44,854 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 3000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.2/9.0
+2025-05-30 22:10:09,027 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 3200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.0/15.6
+2025-05-30 22:11:33,105 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 3400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.1/8.8
+2025-05-30 22:12:59,028 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 3600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.7/10.3
+2025-05-30 22:14:26,160 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 3800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.9/8.4
+2025-05-30 22:15:53,451 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 4000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.8/11.8
+2025-05-30 22:17:21,814 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 4200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.9/7.3
+2025-05-30 22:18:49,945 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 4400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.4/20.3
+2025-05-30 22:20:03,218 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 4600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.0/7.1
+2025-05-30 22:21:15,209 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 4800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.0/8.4
+2025-05-30 22:22:28,270 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 5000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.6/12.5
+2025-05-30 22:23:41,458 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 5200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.9/40.0
+2025-05-30 22:25:00,054 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 5400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.9/12.3
+2025-05-30 22:26:24,311 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 5600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.8/14.0
+2025-05-30 22:27:51,646 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 5800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.1/35.8
+2025-05-30 22:29:21,410 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 6000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.9/35.1
+2025-05-30 22:30:50,037 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 6200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-10.2/9.2
+2025-05-30 22:32:17,439 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 6400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.0/19.1
+2025-05-30 22:33:41,488 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 6600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-7.1/46.2
+2025-05-30 22:35:05,285 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 6800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.0/11.9
+2025-05-30 22:36:34,816 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 7000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-7.7/14.5
+2025-05-30 22:38:05,613 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 7200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-10.1/20.0
+2025-05-30 22:39:33,586 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 7400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.9/13.9
+2025-05-30 22:41:00,406 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 7600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.8/8.9
+2025-05-30 22:42:18,340 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 7800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-4.9/14.0
+2025-05-30 22:43:35,391 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 8000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.0/31.8
+2025-05-30 22:44:52,406 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 8200 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-14.3/53.2
+2025-05-30 22:46:09,791 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 8400 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.1/50.2
+2025-05-30 22:47:15,604 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 8600 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.9/8.3
+2025-05-30 22:48:21,071 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 8800 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-5.7/6.3
+2025-05-30 22:49:26,819 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 9000 X:torch.Size([32, 24, 12, 43]) Y:torch.Size([32, 12, 1]) X_minmax:-6.1/8.7
+2025-05-30 22:50:06,044 - src.trainers.train - INFO - train.py:364 - train_epoch - Ep 2 Train Loss:0.2122 MAE:0.2648 RMSE:0.4349
+2025-05-30 22:55:53,459 - src.trainers.train - INFO - train.py:417 - validate - Ep 2 Valid Loss:0.0333 MAE:0.0829 RMSE:0.1079
+2025-05-30 22:55:53,461 - src.trainers.train - INFO - train.py:583 - train_model - Epoch 2 Summary - Train Loss: 0.2122, Val Loss: 0.0333
+2025-05-30 22:55:53,462 - src.trainers.train - INFO - train.py:590 - train_model - New best val_loss: 0.0333. Saving to C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_best.pt
+2025-05-30 22:55:53,484 - src.trainers.train.EarlyStopping - DEBUG - train.py:114 - __call__ - ES check: val_loss=0.0333, best_score=-0.04357827978461214
+2025-05-30 22:55:53,485 - src.trainers.train.EarlyStopping - INFO - train.py:122 - __call__ - ES: Model improved. New best val_loss=0.0333. Saving to C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_checkpoint.pt
+2025-05-30 22:55:53,511 - src.trainers.train.EarlyStopping - DEBUG - train.py:153 - save_checkpoint - Checkpoint saved: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_checkpoint.pt
+2025-05-30 22:55:53,536 - src.trainers.train - INFO - train.py:604 - train_model - Final model saved. Best val_loss: 0.0333
+2025-05-30 22:55:53,545 - src.trainers.train - INFO - train.py:611 - train_model - Training complete.
+2025-05-30 22:55:53,757 - __main__ - INFO - train_improved_model.py:38 - <module> - Training completed successfully
+2025-05-31 23:48:07,328 - src.trainers.train - INFO - train.py:91 - setup_logging - Logging setup. Level: 10. Output: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved/training_run.log
+2025-05-31 23:48:07,329 - src.trainers.train - INFO - train.py:437 - train_model - Starting PM2.5 model training: configs/improved_model_config.yaml, Output: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-05-31 23:48:07,366 - src.trainers.train - INFO - train.py:442 - train_model - Device: cuda (NVIDIA GeForce RTX 3050 Laptop GPU)
+2025-05-31 23:48:07,374 - src.trainers.train - INFO - train.py:450 - train_model - TensorBoard: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\tensorboard_logs\20250531_234807
+2025-05-31 23:48:07,374 - src.trainers.train - INFO - train.py:452 - train_model - Step 1: Loading processed data...
+2025-05-31 23:48:07,375 - src.trainers.train - INFO - train.py:187 - load_processed_data - Loading processed data from: data/processed/
+2025-05-31 23:48:07,375 - src.trainers.train - INFO - train.py:193 - load_processed_data - Absolute data dir: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed
+2025-05-31 23:48:07,376 - src.trainers.train - DEBUG - train.py:196 - load_processed_data - Files in data dir 'C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed': ['adjacency_matrix_enhanced.png', 'adj_matrix_enhanced.npy', 'connection_analysis.png', 'dataset_sizes.png', 'feature_cols.pkl', 'model_config.pkl', 'scalers_enhanced.pkl', 'stations_with_features.csv', 'station_locations.png', 'test_enhanced.pkl', 'train_enhanced.csv', 'train_enhanced.pkl', 'validate_data.py', 'validation_log_20250528_233738.txt', 'validation_log_20250529_000315.txt', 'validation_log_20250529_000451.txt', 'valid_enhanced.pkl']
+2025-05-31 23:48:07,721 - src.trainers.train - INFO - train.py:236 - load_processed_data - Loaded train - X:(291862, 43), Y:(291862, 1)
+2025-05-31 23:48:07,721 - src.trainers.train - INFO - train.py:238 - load_processed_data - Adj matrix: (12, 12), Scalers: 12 keys, Feature cols: 43
+2025-05-31 23:48:07,736 - src.trainers.train - INFO - train.py:462 - train_model - Step 1.5: Preparing time series sequences (len 24)...
+2025-05-31 23:48:07,736 - src.trainers.train - INFO - train.py:254 - prepare_time_series_data - Preparing time series: seq_len=24, num_stations=12
+2025-05-31 23:48:07,737 - src.trainers.train - DEBUG - train.py:257 - prepare_time_series_data - Input X:(291862, 43), Y:(291862, 1)
+2025-05-31 23:48:09,639 - src.trainers.train - INFO - train.py:287 - prepare_time_series_data - Created sequences - X: (291839, 24, 43), Y: (291839, 12, 1)
+2025-05-31 23:48:10,488 - src.trainers.train - INFO - train.py:254 - prepare_time_series_data - Preparing time series: seq_len=24, num_stations=12
+2025-05-31 23:48:10,489 - src.trainers.train - DEBUG - train.py:257 - prepare_time_series_data - Input X:(103151, 43), Y:(103151, 1)
+2025-05-31 23:48:11,364 - src.trainers.train - INFO - train.py:287 - prepare_time_series_data - Created sequences - X: (103128, 24, 43), Y: (103128, 12, 1)
+2025-05-31 23:48:11,630 - src.trainers.train - INFO - train.py:478 - train_model - Data shapes after seq prep - Train X:(291839, 24, 43) Y:(291839, 12, 1); Valid X:(103128, 24, 43) Y:(103128, 12, 1)
+2025-05-31 23:48:11,642 - src.trainers.train - INFO - train.py:484 - train_model - Step 3: Creating data loaders...
+2025-05-31 23:48:11,642 - src.trainers.train - WARNING - train.py:488 - train_model - num_workers>0 on Win. Setting to 0.
+2025-05-31 23:48:11,643 - src.trainers.train - DEBUG - train.py:490 - train_model - Batch size: 64, Num workers: 0
+2025-05-31 23:48:11,643 - src.trainers.train.MultiStationDataset - DEBUG - train.py:38 - __init__ - Init MultiStationDataset: X:(291839, 24, 43), Y:(291839, 12, 1), num_stations_model_expects:12
+2025-05-31 23:48:11,644 - src.trainers.train.MultiStationDataset - DEBUG - train.py:38 - __init__ - Init MultiStationDataset: X:(103128, 24, 43), Y:(103128, 12, 1), num_stations_model_expects:12
+2025-05-31 23:48:11,644 - src.trainers.train - DEBUG - train.py:515 - train_model - Loaders created: Train batches=4560, Valid batches=1612
+2025-05-31 23:48:11,644 - src.trainers.train - INFO - train.py:519 - train_model - Step 4: Initializing model...
+2025-05-31 23:48:11,865 - src.trainers.train - INFO - train.py:536 - train_model - Model architecture:
+PM25Model(
+  (meteo_proj): Sequential(
+    (0): Linear(in_features=30, out_features=128, bias=True)
+    (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.075, inplace=False)
+    (4): Linear(in_features=128, out_features=128, bias=True)
+    (5): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    (6): ReLU()
+    (7): Dropout(p=0.075, inplace=False)
+  )
+  (pm25_proj): Sequential(
+    (0): Linear(in_features=13, out_features=128, bias=True)
+    (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout(p=0.075, inplace=False)
+    (4): Linear(in_features=128, out_features=128, bias=True)
+    (5): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    (6): ReLU()
+    (7): Dropout(p=0.075, inplace=False)
+  )
+  (initial_feature_fusion): Sequential(
+    (0): Linear(in_features=256, out_features=128, bias=True)
+    (1): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+  )
+  (wavelet_layer): AdaptiveWaveletLayer()
+  (stca): STCAttention(
+    (query_proj): Linear(in_features=30, out_features=128, bias=True)
+    (key_proj): Linear(in_features=13, out_features=128, bias=True)
+    (value_proj): Linear(in_features=13, out_features=128, bias=True)
+    (output_proj): Linear(in_features=128, out_features=30, bias=True)
+    (norm1): LayerNorm((30,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((30,), eps=1e-05, elementwise_affine=True)
+    (ffn): Sequential(
+      (0): Linear(in_features=30, out_features=120, bias=True)
+      (1): GELU(approximate='none')
+      (2): Linear(in_features=120, out_features=30, bias=True)
+      (3): Dropout(p=0.1, inplace=False)
+    )
+    (dropout): Dropout(p=0.1, inplace=False)
+  )
+  (stca_meteo_output_proj): Linear(in_features=30, out_features=128, bias=True)
+  (stca_path_fusion): Sequential(
+    (0): Linear(in_features=256, out_features=128, bias=True)
+    (1): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+  )
+  (multi_scale1): MultiScaleResidualBlock(
+    (fc1_small): Linear(in_features=128, out_features=32, bias=True)
+    (fc1_medium): Linear(in_features=128, out_features=64, bias=True)
+    (fc1_large): Linear(in_features=128, out_features=32, bias=True)
+    (combine): Linear(in_features=128, out_features=128, bias=True)
+    (norm1): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    (skip): Identity()
+    (act): ReLU()
+  )
+  (multi_scale2): MultiScaleResidualBlock(
+    (fc1_small): Linear(in_features=128, out_features=32, bias=True)
+    (fc1_medium): Linear(in_features=128, out_features=64, bias=True)
+    (fc1_large): Linear(in_features=128, out_features=32, bias=True)
+    (combine): Linear(in_features=128, out_features=128, bias=True)
+    (norm1): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    (skip): Identity()
+    (act): ReLU()
+  )
+  (conv_lstm_cells): ModuleList(
+    (0-1): 2 x ConvLSTMCell(
+      (ih): Linear(in_features=128, out_features=512, bias=True)
+      (hh): Linear(in_features=128, out_features=512, bias=True)
+    )
+  )
+  (lstm_dropout): Dropout(p=0.15, inplace=False)
+  (gat): GraphAttentionLayer(
+    (leakyrelu): LeakyReLU(negative_slope=0.2)
+  )
+  (output_layer): Sequential(
+    (0): Linear(in_features=128, out_features=64, bias=True)
+    (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (2): ReLU()
+    (3): Dropout(p=0.15, inplace=False)
+    (4): Linear(in_features=64, out_features=72, bias=True)
+  )
+  (output_transform): OutputTransformation()
+  (feature_dropout): Dropout(p=0.075, inplace=False)
+  (attention_dropout): Dropout(p=0.15, inplace=False)
+  (final_dropout): Dropout(p=0.18, inplace=False)
+)
+2025-05-31 23:48:11,868 - src.trainers.train - INFO - train.py:537 - train_model - Params: Total 495,061, Trainable 491,989
+2025-05-31 23:48:11,869 - src.trainers.train.EarlyStopping - DEBUG - train.py:109 - __init__ - EarlyStopping init: patience=8, min_delta=0.0005, mode=min
+2025-05-31 23:48:11,869 - src.trainers.train - INFO - train.py:558 - train_model - Optimizer, Scheduler, EarlyStopping initialized.
+2025-05-31 23:48:11,870 - src.trainers.train - INFO - train.py:560 - train_model - Step 7: Starting training loop...
+2025-05-31 23:48:11,870 - src.trainers.train - INFO - train.py:563 - train_model - ====== Epoch 1/50 ===== LR: 2.0e-03 =====
+2025-05-31 23:48:12,099 - src.trainers.train - DEBUG - train.py:320 - train_epoch - B 0 X:torch.Size([64, 24, 12, 43]) Y:torch.Size([64, 12, 1]) X_minmax:-5.9/22.3

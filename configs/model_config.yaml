@@ -1,0 +1,81 @@
+# Model Architecture Configuration
+
+# Input dimensions
+input_features: 11
+num_stations: 35
+sequence_length: 24
+forecast_horizon: 72
+
+# ConvLSTM parameters
+conv_lstm:
+  hidden_dims: 64
+  kernel_size: 3
+  num_layers: 2
+  dropout_rate: 0.2
+
+# Graph Attention parameters
+gat:
+  hidden_dims: 64
+  num_heads: 4
+  num_layers: 2
+  dropout_rate: 0.2
+  alpha: 0.2
+
+# Multi-scale residual block parameters
+residual:
+  num_blocks: 3
+  hidden_dims: [32, 64, 128]
+  kernel_sizes: [3, 5, 7]
+
+# Output layer parameters
+output:
+  hidden_dims: 32
+  dropout_rate: 0.1
+
+# Model Architecture
+model:
+  time_steps: 24
+  num_stations: 12
+  input_features: 10
+  forecast_horizon: 72
+  hidden_dims: 64
+  num_heads: 8
+  num_layers: 2
+  dropout_rate: 0.2
+
+# Wavelet Parameters
+wavelet:
+  wavelet_type: "db4"
+  level: 2
+
+# Training Parameters
+training:
+  batch_size: 32
+  epochs: 2
+  learning_rate: 0.001
+  min_lr: 1e-6
+  patience: 10
+  min_delta: 0.0001
+  validation_split: 0.2
+  grad_clip: 1.0
+  weight_decay: 0.0001
+  num_workers: 4
+
+# Data Parameters
+data:
+  data_dir: "data/processed"
+  output_dir: "models"
+  sequence_length: 24
+
+# Loss Function Parameters
+loss:
+  lambda_phys: 0.2
+  lambda_wavelet: 0.1
+  lambda_attention: 0.1
+
+# Evaluation Metrics
+metrics:
+  - mae
+  - rmse
+  - mape
+  - r2

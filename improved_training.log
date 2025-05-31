@@ -1,0 +1,34 @@
+2025-05-28 12:18:50,634 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-28 12:18:50,634 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-05-28 23:51:17,445 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-28 23:51:17,446 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-05-29 00:22:00,427 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-29 00:22:00,427 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-05-29 00:27:11,489 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-29 00:27:11,490 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-05-29 00:50:03,787 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-29 00:50:03,788 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-05-29 00:59:02,847 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-29 00:59:02,847 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-05-29 01:02:31,036 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-29 01:02:31,036 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-05-29 01:03:56,739 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-29 01:03:56,740 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-05-29 01:07:00,927 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-29 01:07:00,927 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-05-29 01:14:11,152 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-29 01:14:11,153 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-05-29 01:15:18,949 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-29 01:15:18,949 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-05-29 01:32:33,634 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-29 01:32:33,634 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-05-29 01:44:53,562 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-29 01:44:53,562 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-05-29 02:05:57,246 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-29 02:05:57,252 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-05-29 02:13:23,024 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-29 02:13:23,024 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-05-29 02:16:30,661 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-29 02:16:30,661 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-05-29 02:17:27,916 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-05-29 02:17:27,916 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
