@@ -52,7 +52,7 @@ wavelet:
 
 # Training Parameters
 training:
-  batch_size: 64 # Increased for better gradient estimates
+  batch_size: 128 # Increased for better gradient estimates
   epochs: 50 # Reduced from excessive epochs
   learning_rate: 0.002 # Increased for faster convergence
   min_lr: 1e-5 # Higher minimum

@@ -32,3 +32,10 @@
 2025-05-29 02:16:30,661 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
 2025-05-29 02:17:27,916 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
 2025-05-29 02:17:27,916 - src.trainers.train - INFO - Loading configuration from configs/improved_model_config.yaml
+2025-06-01 16:01:38,025 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 16:01:38,025 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 16:02:49,366 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 16:02:49,366 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 16:06:02,594 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 16:06:02,599 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 16:06:02,599 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml

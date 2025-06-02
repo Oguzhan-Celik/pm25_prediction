@@ -24,3 +24,101 @@
 2025-05-30 20:46:53,249 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
 2025-05-31 23:48:07,289 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
 2025-05-31 23:48:07,290 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 00:32:47,211 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 00:32:47,211 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 00:43:37,720 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 00:43:37,721 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 00:44:51,595 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 00:44:51,596 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 00:50:08,734 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 00:50:08,734 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 00:52:37,319 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 00:52:37,319 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 01:00:13,669 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 01:00:13,669 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 01:11:06,660 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 01:11:06,660 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 01:19:43,228 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 01:19:43,229 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 01:20:33,438 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 01:20:33,439 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 01:37:52,528 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 01:37:52,530 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 01:39:55,999 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 01:39:56,000 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 01:42:06,875 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 01:42:06,876 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 02:01:25,496 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 02:01:25,497 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 02:11:19,143 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 02:11:19,143 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 02:12:04,223 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 02:12:04,224 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 02:17:22,327 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 02:17:22,328 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 02:33:35,771 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 02:33:35,772 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 02:34:29,877 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 02:34:29,877 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 15:11:25,088 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 15:11:25,089 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 15:12:08,193 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 15:12:08,193 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 15:25:31,608 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 15:25:31,609 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 15:33:20,230 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 15:33:20,230 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 15:37:18,833 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 15:37:18,834 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 15:41:38,874 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 15:41:38,874 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 15:56:47,748 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 15:56:47,748 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 16:06:47,275 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 16:06:47,276 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 16:06:47,276 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 16:10:02,001 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 16:10:02,006 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 16:10:02,007 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 16:16:36,989 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 16:16:36,991 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 16:16:36,991 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 16:18:16,981 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 16:18:16,981 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 16:18:16,982 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 16:20:26,083 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 16:20:26,084 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 16:20:26,084 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 16:30:21,731 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 16:30:21,731 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 16:30:21,731 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 16:43:50,616 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 16:43:50,616 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 16:43:50,616 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 16:50:11,035 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 16:50:11,036 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 16:50:11,036 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 16:52:16,725 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 16:52:16,726 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 16:52:16,726 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 16:54:07,240 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 16:54:07,241 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 16:54:07,242 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 16:55:22,703 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 16:55:22,705 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 16:55:22,705 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 17:04:04,004 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 17:04:04,005 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 17:04:04,005 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 17:17:13,857 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 17:17:13,857 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 17:17:13,857 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 17:49:38,111 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 17:49:38,111 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 17:49:38,111 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 18:10:14,880 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 18:10:14,880 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 18:10:14,881 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
+2025-06-01 18:22:38,175 - __main__ - INFO - Set PyTorch multiprocessing start method to 'spawn'.
+2025-06-01 18:22:38,175 - __main__ - INFO - Starting training with improved configuration: configs/improved_model_config.yaml
+2025-06-01 18:22:38,176 - src.trainers.train - INFO - Loading config from configs/improved_model_config.yaml
