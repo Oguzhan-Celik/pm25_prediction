@@ -56,7 +56,7 @@ training:
   epochs: 50 # Reduced from excessive epochs
   learning_rate: 0.002 # Increased for faster convergence
   min_lr: 1e-5 # Higher minimum
-  patience: 8 # Reduced patience for faster adaptation
+  patience: 3 # Reduced patience for faster adaptation
   min_delta: 0.0005 # Adjusted threshold
   validation_split: 0.2
   grad_clip: 0.5 # Reduced for more aggressive updates

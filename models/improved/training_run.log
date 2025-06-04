@@ -5484,3 +5484,265 @@ MemoryError
 2025-06-02 05:05:06,856 - src.trainers.train - INFO - train.py:1225 - train_model - Final model saved. Best Val Loss: 0.074770319275558
 2025-06-02 05:05:06,860 - src.trainers.train - INFO - train.py:1236 - train_model - Training complete.
 2025-06-02 05:05:06,885 - __main__ - INFO - train_improved_model.py:85 - <module> - Training completed successfully.
+2025-06-03 01:08:51,574 - src.trainers.train - INFO - train.py:126 - setup_logging - Logging setup. Level: 10. Output: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved/training_run.log
+2025-06-03 01:08:51,609 - src.trainers.train - INFO - train.py:836 - train_model - Optimizing CUDA settings.
+2025-06-03 01:08:51,610 - src.trainers.train - INFO - train.py:839 - train_model - Using conservative CUDA settings for Windows: cudnn.benchmark=False, cudnn.deterministic=True.
+2025-06-03 01:08:51,610 - src.trainers.train - INFO - train.py:850 - train_model - Starting PM2.5 model training: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\configs\improved_model_config.yaml, Output: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-06-03 01:08:51,614 - src.trainers.train - INFO - train.py:855 - train_model - Device: cuda (NVIDIA GeForce RTX 3050 Laptop GPU)
+2025-06-03 01:08:51,708 - src.trainers.train - INFO - train.py:867 - train_model - TensorBoard: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\tensorboard_logs\20250603_010851
+2025-06-03 01:08:51,709 - src.trainers.train - INFO - train.py:869 - train_model - Step 1: Loading processed data...
+2025-06-03 01:08:51,709 - src.trainers.train - INFO - train.py:220 - load_processed_data - Loading processed data from: data/processed/
+2025-06-03 01:08:51,711 - src.trainers.train - INFO - train.py:226 - load_processed_data - Absolute data dir: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed
+2025-06-03 01:08:51,712 - src.trainers.train - DEBUG - train.py:229 - load_processed_data - Files in data dir 'C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed': ['adjacency_matrix_enhanced.png', 'adj_matrix_enhanced.npy', 'connection_analysis.png', 'dataset_sizes.png', 'feature_cols.pkl', 'model_config.pkl', 'scalers_enhanced.pkl', 'stations_with_features.csv', 'station_locations.png', 'test_enhanced.pkl', 'train_enhanced.csv', 'train_enhanced.pkl', 'validate_data.py', 'validation_log_20250528_233738.txt', 'validation_log_20250529_000315.txt', 'validation_log_20250529_000451.txt', 'valid_enhanced.pkl']
+2025-06-03 01:08:52,090 - src.trainers.train - INFO - train.py:281 - load_processed_data - Loaded train - X:(291862, 43), Y:(291862, 1)
+2025-06-03 01:08:52,091 - src.trainers.train - INFO - train.py:282 - load_processed_data - Loaded valid - X:(103151, 43), Y:(103151, 1)
+2025-06-03 01:08:52,091 - src.trainers.train - INFO - train.py:283 - load_processed_data - Adj matrix: (12, 12), Scalers: 12 keys, Feature cols: 43
+2025-06-03 01:08:52,104 - src.trainers.train - INFO - train.py:886 - train_model - Using 25% of the training and validation data.
+2025-06-03 01:08:52,105 - src.trainers.train - INFO - train.py:917 - train_model - Reduced train data to X:(72965, 43), Y:(72965, 1)
+2025-06-03 01:08:52,105 - src.trainers.train - INFO - train.py:918 - train_model - Reduced valid data to X:(25787, 43), Y:(25787, 1)
+2025-06-03 01:08:52,106 - src.trainers.train - INFO - train.py:930 - train_model - Using num_stations = 12 (for Y prep)
+2025-06-03 01:08:52,106 - src.trainers.train - INFO - train.py:932 - train_model - Step 1.5: Preparing time series sequences (len 24)...
+2025-06-03 01:08:52,107 - src.trainers.train - INFO - train.py:299 - prepare_time_series_data - Preparing time series: seq_len=24, num_stations_for_Y=12
+2025-06-03 01:08:52,107 - src.trainers.train - DEBUG - train.py:302 - prepare_time_series_data - Input X:(72965, 43), Y:(72965, 1)
+2025-06-03 01:08:52,436 - src.trainers.train - INFO - train.py:334 - prepare_time_series_data - X_seq_np shape before passing to Dataset: (72942, 24, 43)
+2025-06-03 01:08:52,446 - src.trainers.train - INFO - train.py:372 - prepare_time_series_data - Created sequences for Dataset - X: (72942, 24, 43), Y: (72942, 12, 1)
+2025-06-03 01:08:52,604 - src.trainers.train - INFO - train.py:299 - prepare_time_series_data - Preparing time series: seq_len=24, num_stations_for_Y=12
+2025-06-03 01:08:52,604 - src.trainers.train - DEBUG - train.py:302 - prepare_time_series_data - Input X:(25787, 43), Y:(25787, 1)
+2025-06-03 01:08:52,723 - src.trainers.train - INFO - train.py:334 - prepare_time_series_data - X_seq_np shape before passing to Dataset: (25764, 24, 43)
+2025-06-03 01:08:52,727 - src.trainers.train - INFO - train.py:372 - prepare_time_series_data - Created sequences for Dataset - X: (25764, 24, 43), Y: (25764, 12, 1)
+2025-06-03 01:08:52,785 - src.trainers.train - INFO - train.py:949 - train_model - Data shapes after seq prep for Dataset - Train X:(72942, 24, 43) Y:(72942, 12, 1); Valid X:(25764, 24, 43) Y:(25764, 12, 1)
+2025-06-03 01:08:52,795 - src.trainers.train - INFO - train.py:955 - train_model - Step 3: Creating data loaders...
+2025-06-03 01:08:52,796 - src.trainers.train - INFO - train.py:700 - create_optimized_dataloaders - Successfully got 'spawn' multiprocessing context for DataLoader on Windows.
+2025-06-03 01:08:52,797 - src.trainers.train - INFO - train.py:727 - create_optimized_dataloaders - DataLoader: batch_size=128, num_workers=4, pin_memory_config=False, actual_pin_memory_used=False
+2025-06-03 01:08:52,797 - src.trainers.train - INFO - train.py:733 - create_optimized_dataloaders - Using num_workers=4 on Windows. Main script MUST be guarded by 'if __name__ == "__main__":'.
+2025-06-03 01:08:52,798 - src.trainers.train - INFO - train.py:754 - create_optimized_dataloaders - DataLoader: persistent_workers=False
+2025-06-03 01:08:52,798 - src.trainers.train - INFO - train.py:989 - train_model - DataLoaders created successfully - Train batches: 569, Valid batches: 202
+2025-06-03 01:08:52,799 - src.trainers.train - INFO - train.py:993 - train_model - Step 4: Initializing model...
+2025-06-03 01:08:53,324 - src.trainers.train - INFO - train.py:788 - optimize_model_for_windows - Model moved to cuda.
+2025-06-03 01:08:53,325 - src.trainers.train - WARNING - train.py:791 - optimize_model_for_windows - Model compilation (torch.compile) is configured but will be SKIPPED on Windows for stability.
+2025-06-03 01:08:53,327 - src.trainers.train - INFO - train.py:1014 - train_model - Params: Total 505,479, Trainable 502,407
+2025-06-03 01:08:53,328 - src.trainers.train - INFO - train.py:415 - create_improved_scheduler - Using CosineAnnealingWarmRestarts scheduler (T_0=10, T_mult=2, eta_min=1e-05).
+2025-06-03 01:08:53,328 - src.trainers.train.EarlyStopping - DEBUG - train.py:144 - __init__ - EarlyStopping init: patience=8, min_delta=0.0005, mode=min
+2025-06-03 01:08:53,328 - src.trainers.train - INFO - train.py:1060 - train_model - Optimizer, Scheduler, EarlyStopping initialized.
+2025-06-03 01:08:53,329 - src.trainers.train - INFO - train.py:1077 - train_model - Mixed precision training enabled with GradScaler for runtime.
+2025-06-03 01:08:53,329 - src.trainers.train - INFO - train.py:1083 - train_model - Step 7: Starting training loop...
+2025-06-03 01:08:53,329 - src.trainers.train - INFO - train.py:1095 - train_model - ====== Epoch 1/50 ===== LR: 2.0e-03 =====
+2025-06-03 01:09:49,519 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 0/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 01:27:27,913 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 56/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 01:46:03,266 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 112/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 02:02:34,957 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 168/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 02:21:10,735 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 224/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 02:40:18,366 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 280/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 02:59:31,803 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 336/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 03:14:11,546 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 392/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 03:28:36,641 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 448/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 03:43:01,154 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 504/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 03:57:26,854 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 560/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 03:59:48,498 - src.trainers.train - INFO - train.py:592 - train_epoch - Ep 1 Train Loss:0.0736 MAE:0.2670 RMSE:0.3910
+2025-06-03 11:05:38,494 - src.trainers.train - INFO - train.py:126 - setup_logging - Logging setup. Level: 10. Output: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved/training_run.log
+2025-06-03 11:05:38,528 - src.trainers.train - INFO - train.py:836 - train_model - Optimizing CUDA settings.
+2025-06-03 11:05:38,528 - src.trainers.train - INFO - train.py:839 - train_model - Using conservative CUDA settings for Windows: cudnn.benchmark=False, cudnn.deterministic=True.
+2025-06-03 11:05:38,529 - src.trainers.train - INFO - train.py:850 - train_model - Starting PM2.5 model training: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\configs\improved_model_config.yaml, Output: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved
+2025-06-03 11:05:38,531 - src.trainers.train - INFO - train.py:855 - train_model - Device: cuda (NVIDIA GeForce RTX 3050 Laptop GPU)
+2025-06-03 11:05:38,541 - src.trainers.train - INFO - train.py:867 - train_model - TensorBoard: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\tensorboard_logs\20250603_110538
+2025-06-03 11:05:38,541 - src.trainers.train - INFO - train.py:869 - train_model - Step 1: Loading processed data...
+2025-06-03 11:05:38,541 - src.trainers.train - INFO - train.py:220 - load_processed_data - Loading processed data from: data/processed/
+2025-06-03 11:05:38,542 - src.trainers.train - INFO - train.py:226 - load_processed_data - Absolute data dir: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed
+2025-06-03 11:05:38,543 - src.trainers.train - DEBUG - train.py:229 - load_processed_data - Files in data dir 'C:\Users\oguzhan\Documents\Code\python\yl_makina_02\data\processed': ['adjacency_matrix_enhanced.png', 'adj_matrix_enhanced.npy', 'connection_analysis.png', 'dataset_sizes.png', 'feature_cols.pkl', 'model_config.pkl', 'scalers_enhanced.pkl', 'stations_with_features.csv', 'station_locations.png', 'test_enhanced.pkl', 'train_enhanced.csv', 'train_enhanced.pkl', 'validate_data.py', 'validation_log_20250528_233738.txt', 'validation_log_20250529_000315.txt', 'validation_log_20250529_000451.txt', 'valid_enhanced.pkl']
+2025-06-03 11:05:38,909 - src.trainers.train - INFO - train.py:281 - load_processed_data - Loaded train - X:(291862, 43), Y:(291862, 1)
+2025-06-03 11:05:38,910 - src.trainers.train - INFO - train.py:282 - load_processed_data - Loaded valid - X:(103151, 43), Y:(103151, 1)
+2025-06-03 11:05:38,910 - src.trainers.train - INFO - train.py:283 - load_processed_data - Adj matrix: (12, 12), Scalers: 12 keys, Feature cols: 43
+2025-06-03 11:05:38,926 - src.trainers.train - INFO - train.py:886 - train_model - Using 25% of the training and validation data.
+2025-06-03 11:05:38,926 - src.trainers.train - INFO - train.py:917 - train_model - Reduced train data to X:(72965, 43), Y:(72965, 1)
+2025-06-03 11:05:38,926 - src.trainers.train - INFO - train.py:918 - train_model - Reduced valid data to X:(25787, 43), Y:(25787, 1)
+2025-06-03 11:05:38,927 - src.trainers.train - INFO - train.py:930 - train_model - Using num_stations = 12 (for Y prep)
+2025-06-03 11:05:38,927 - src.trainers.train - INFO - train.py:932 - train_model - Step 1.5: Preparing time series sequences (len 24)...
+2025-06-03 11:05:38,927 - src.trainers.train - INFO - train.py:299 - prepare_time_series_data - Preparing time series: seq_len=24, num_stations_for_Y=12
+2025-06-03 11:05:38,928 - src.trainers.train - DEBUG - train.py:302 - prepare_time_series_data - Input X:(72965, 43), Y:(72965, 1)
+2025-06-03 11:05:39,204 - src.trainers.train - INFO - train.py:334 - prepare_time_series_data - X_seq_np shape before passing to Dataset: (72942, 24, 43)
+2025-06-03 11:05:39,209 - src.trainers.train - INFO - train.py:372 - prepare_time_series_data - Created sequences for Dataset - X: (72942, 24, 43), Y: (72942, 12, 1)
+2025-06-03 11:05:39,347 - src.trainers.train - INFO - train.py:299 - prepare_time_series_data - Preparing time series: seq_len=24, num_stations_for_Y=12
+2025-06-03 11:05:39,348 - src.trainers.train - DEBUG - train.py:302 - prepare_time_series_data - Input X:(25787, 43), Y:(25787, 1)
+2025-06-03 11:05:39,445 - src.trainers.train - INFO - train.py:334 - prepare_time_series_data - X_seq_np shape before passing to Dataset: (25764, 24, 43)
+2025-06-03 11:05:39,448 - src.trainers.train - INFO - train.py:372 - prepare_time_series_data - Created sequences for Dataset - X: (25764, 24, 43), Y: (25764, 12, 1)
+2025-06-03 11:05:39,491 - src.trainers.train - INFO - train.py:949 - train_model - Data shapes after seq prep for Dataset - Train X:(72942, 24, 43) Y:(72942, 12, 1); Valid X:(25764, 24, 43) Y:(25764, 12, 1)
+2025-06-03 11:05:39,500 - src.trainers.train - INFO - train.py:955 - train_model - Step 3: Creating data loaders...
+2025-06-03 11:05:39,500 - src.trainers.train - INFO - train.py:700 - create_optimized_dataloaders - Successfully got 'spawn' multiprocessing context for DataLoader on Windows.
+2025-06-03 11:05:39,500 - src.trainers.train - INFO - train.py:727 - create_optimized_dataloaders - DataLoader: batch_size=128, num_workers=4, pin_memory_config=False, actual_pin_memory_used=False
+2025-06-03 11:05:39,501 - src.trainers.train - INFO - train.py:733 - create_optimized_dataloaders - Using num_workers=4 on Windows. Main script MUST be guarded by 'if __name__ == "__main__":'.
+2025-06-03 11:05:39,501 - src.trainers.train - INFO - train.py:754 - create_optimized_dataloaders - DataLoader: persistent_workers=False
+2025-06-03 11:05:39,501 - src.trainers.train - INFO - train.py:989 - train_model - DataLoaders created successfully - Train batches: 569, Valid batches: 202
+2025-06-03 11:05:39,502 - src.trainers.train - INFO - train.py:993 - train_model - Step 4: Initializing model...
+2025-06-03 11:05:39,999 - src.trainers.train - INFO - train.py:788 - optimize_model_for_windows - Model moved to cuda.
+2025-06-03 11:05:40,000 - src.trainers.train - WARNING - train.py:791 - optimize_model_for_windows - Model compilation (torch.compile) is configured but will be SKIPPED on Windows for stability.
+2025-06-03 11:05:40,001 - src.trainers.train - INFO - train.py:1014 - train_model - Params: Total 505,479, Trainable 502,407
+2025-06-03 11:05:40,002 - src.trainers.train - INFO - train.py:415 - create_improved_scheduler - Using CosineAnnealingWarmRestarts scheduler (T_0=10, T_mult=2, eta_min=1e-05).
+2025-06-03 11:05:40,002 - src.trainers.train.EarlyStopping - DEBUG - train.py:144 - __init__ - EarlyStopping init: patience=8, min_delta=0.0005, mode=min
+2025-06-03 11:05:40,002 - src.trainers.train - INFO - train.py:1060 - train_model - Optimizer, Scheduler, EarlyStopping initialized.
+2025-06-03 11:05:40,003 - src.trainers.train - INFO - train.py:1077 - train_model - Mixed precision training enabled with GradScaler for runtime.
+2025-06-03 11:05:40,003 - src.trainers.train - INFO - train.py:1083 - train_model - Step 7: Starting training loop...
+2025-06-03 11:05:40,003 - src.trainers.train - INFO - train.py:1095 - train_model - ====== Epoch 1/50 ===== LR: 2.0e-03 =====
+2025-06-03 11:06:33,283 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 0/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 11:22:09,759 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 56/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 11:35:57,123 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 112/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 11:49:34,549 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 168/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 12:03:36,394 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 224/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 12:18:03,092 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 280/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 12:32:31,567 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 336/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 12:48:02,935 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 392/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 13:03:36,125 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 448/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 13:19:27,455 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 504/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 13:35:43,478 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 1, Batch 560/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 13:38:29,617 - src.trainers.train - INFO - train.py:592 - train_epoch - Ep 1 Train Loss:0.0736 MAE:0.2536 RMSE:0.3537
+2025-06-03 14:33:23,276 - src.trainers.train - INFO - train.py:676 - validate - Ep 1 Valid Loss:0.0414 MAE:0.1632 RMSE:0.2291
+2025-06-03 14:33:23,279 - src.trainers.train - INFO - train.py:1158 - train_model - Epoch 1 Summary - Train Loss: 0.0736, Val Loss: 0.0414
+2025-06-03 14:33:23,284 - src.trainers.train - INFO - train.py:1186 - train_model - New best score/loss. Saving model to C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_best.pt (Val Loss: 0.041421030873967576, Train Loss: 0.0736)
+2025-06-03 14:33:23,349 - src.trainers.train.EarlyStopping - DEBUG - train.py:149 - __call__ - ES check: val_loss=0.0414, best_score=None
+2025-06-03 14:33:23,350 - src.trainers.train.EarlyStopping - INFO - train.py:155 - __call__ - ES: Model improved. New best val_loss=0.0414. Saving to C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_checkpoint.pt
+2025-06-03 14:33:23,380 - src.trainers.train.EarlyStopping - DEBUG - train.py:186 - save_checkpoint - Checkpoint saved: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_checkpoint.pt
+2025-06-03 14:33:23,381 - src.trainers.train - INFO - train.py:1095 - train_model - ====== Epoch 2/50 ===== LR: 2.0e-03 =====
+2025-06-03 14:34:12,106 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 2, Batch 0/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 14:48:23,357 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 2, Batch 56/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 15:04:29,429 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 2, Batch 112/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 15:18:55,562 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 2, Batch 168/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 15:32:52,820 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 2, Batch 224/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 15:46:17,727 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 2, Batch 280/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 16:00:42,277 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 2, Batch 336/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 16:15:20,809 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 2, Batch 392/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 16:29:56,050 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 2, Batch 448/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 16:44:27,193 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 2, Batch 504/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 16:58:33,387 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 2, Batch 560/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 17:00:51,606 - src.trainers.train - INFO - train.py:592 - train_epoch - Ep 2 Train Loss:0.0397 MAE:0.1730 RMSE:0.2429
+2025-06-03 17:48:47,042 - src.trainers.train - INFO - train.py:676 - validate - Ep 2 Valid Loss:0.1522 MAE:0.4095 RMSE:0.4861
+2025-06-03 17:48:47,043 - src.trainers.train - INFO - train.py:1158 - train_model - Epoch 2 Summary - Train Loss: 0.0397, Val Loss: 0.1522
+2025-06-03 17:48:47,044 - src.trainers.train.EarlyStopping - DEBUG - train.py:149 - __call__ - ES check: val_loss=0.1522, best_score=-0.041421030873967576
+2025-06-03 17:48:47,045 - src.trainers.train.EarlyStopping - DEBUG - train.py:162 - __call__ - ES: No improvement. Counter: 1/8
+2025-06-03 17:48:47,045 - src.trainers.train - INFO - train.py:1095 - train_model - ====== Epoch 3/50 ===== LR: 1.8e-03 =====
+2025-06-03 17:49:34,740 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 3, Batch 0/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 18:03:08,802 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 3, Batch 56/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 18:19:15,673 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 3, Batch 112/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 18:36:32,447 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 3, Batch 168/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 18:53:09,389 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 3, Batch 224/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 19:08:49,771 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 3, Batch 280/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 19:25:05,387 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 3, Batch 336/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 19:40:37,003 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 3, Batch 392/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 19:54:39,223 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 3, Batch 448/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 20:08:57,762 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 3, Batch 504/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 20:23:04,333 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 3, Batch 560/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 20:25:22,901 - src.trainers.train - INFO - train.py:592 - train_epoch - Ep 3 Train Loss:0.0352 MAE:0.1600 RMSE:0.2232
+2025-06-03 21:23:27,473 - src.trainers.train - INFO - train.py:676 - validate - Ep 3 Valid Loss:0.1729 MAE:0.4116 RMSE:0.5096
+2025-06-03 21:23:27,473 - src.trainers.train - INFO - train.py:1158 - train_model - Epoch 3 Summary - Train Loss: 0.0352, Val Loss: 0.1729
+2025-06-03 21:23:27,473 - src.trainers.train.EarlyStopping - DEBUG - train.py:149 - __call__ - ES check: val_loss=0.1729, best_score=-0.041421030873967576
+2025-06-03 21:23:27,477 - src.trainers.train.EarlyStopping - DEBUG - train.py:162 - __call__ - ES: No improvement. Counter: 2/8
+2025-06-03 21:23:27,477 - src.trainers.train - INFO - train.py:1095 - train_model - ====== Epoch 4/50 ===== LR: 1.6e-03 =====
+2025-06-03 21:24:29,532 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 4, Batch 0/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 21:41:32,836 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 4, Batch 56/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 21:56:33,947 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 4, Batch 112/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 22:11:13,690 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 4, Batch 168/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 22:25:41,231 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 4, Batch 224/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 22:39:58,589 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 4, Batch 280/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 22:55:29,256 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 4, Batch 336/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 23:11:52,540 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 4, Batch 392/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 23:26:39,172 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 4, Batch 448/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 23:40:58,587 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 4, Batch 504/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 23:55:17,724 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 4, Batch 560/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-03 23:57:39,441 - src.trainers.train - INFO - train.py:592 - train_epoch - Ep 4 Train Loss:0.0308 MAE:0.1411 RMSE:0.1974
+2025-06-04 00:49:03,540 - src.trainers.train - INFO - train.py:676 - validate - Ep 4 Valid Loss:0.0531 MAE:0.1915 RMSE:0.2473
+2025-06-04 00:49:03,543 - src.trainers.train - INFO - train.py:1158 - train_model - Epoch 4 Summary - Train Loss: 0.0308, Val Loss: 0.0531
+2025-06-04 00:49:03,544 - src.trainers.train.EarlyStopping - DEBUG - train.py:149 - __call__ - ES check: val_loss=0.0531, best_score=-0.041421030873967576
+2025-06-04 00:49:03,545 - src.trainers.train.EarlyStopping - DEBUG - train.py:162 - __call__ - ES: No improvement. Counter: 3/8
+2025-06-04 00:49:03,545 - src.trainers.train - INFO - train.py:1095 - train_model - ====== Epoch 5/50 ===== LR: 1.3e-03 =====
+2025-06-04 00:49:53,581 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 5, Batch 0/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 01:04:30,869 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 5, Batch 56/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 01:18:43,613 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 5, Batch 112/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 01:32:56,662 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 5, Batch 168/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 01:47:07,722 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 5, Batch 224/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 02:01:34,077 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 5, Batch 280/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 02:15:43,454 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 5, Batch 336/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 02:29:56,477 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 5, Batch 392/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 02:44:04,140 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 5, Batch 448/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 02:58:36,789 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 5, Batch 504/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 03:13:01,107 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 5, Batch 560/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 03:15:18,786 - src.trainers.train - INFO - train.py:592 - train_epoch - Ep 5 Train Loss:0.0269 MAE:0.1388 RMSE:0.1951
+2025-06-04 04:08:38,270 - src.trainers.train - INFO - train.py:676 - validate - Ep 5 Valid Loss:0.0371 MAE:0.1643 RMSE:0.2210
+2025-06-04 04:08:38,295 - src.trainers.train - INFO - train.py:1158 - train_model - Epoch 5 Summary - Train Loss: 0.0269, Val Loss: 0.0371
+2025-06-04 04:08:38,299 - src.trainers.train - INFO - train.py:1186 - train_model - New best score/loss. Saving model to C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_best.pt (Val Loss: 0.03714704420763335, Train Loss: 0.0269)
+2025-06-04 04:08:38,329 - src.trainers.train.EarlyStopping - DEBUG - train.py:149 - __call__ - ES check: val_loss=0.0371, best_score=-0.041421030873967576
+2025-06-04 04:08:38,330 - src.trainers.train.EarlyStopping - INFO - train.py:155 - __call__ - ES: Model improved. New best val_loss=0.0371. Saving to C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_checkpoint.pt
+2025-06-04 04:08:38,375 - src.trainers.train.EarlyStopping - DEBUG - train.py:186 - save_checkpoint - Checkpoint saved: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_checkpoint.pt
+2025-06-04 04:08:38,375 - src.trainers.train - INFO - train.py:1095 - train_model - ====== Epoch 6/50 ===== LR: 1.0e-03 =====
+2025-06-04 04:09:29,991 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 6, Batch 0/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 04:23:48,588 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 6, Batch 56/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 04:38:05,353 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 6, Batch 112/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 04:52:34,541 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 6, Batch 168/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 05:06:53,279 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 6, Batch 224/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 05:21:11,293 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 6, Batch 280/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 05:35:50,423 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 6, Batch 336/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 05:50:48,301 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 6, Batch 392/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 06:05:39,741 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 6, Batch 448/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 06:20:30,844 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 6, Batch 504/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 06:35:27,339 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 6, Batch 560/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 06:37:50,939 - src.trainers.train - INFO - train.py:592 - train_epoch - Ep 6 Train Loss:0.0259 MAE:0.1299 RMSE:0.1736
+2025-06-04 07:32:08,961 - src.trainers.train - INFO - train.py:676 - validate - Ep 6 Valid Loss:0.0318 MAE:0.1712 RMSE:0.2209
+2025-06-04 07:32:08,963 - src.trainers.train - INFO - train.py:1158 - train_model - Epoch 6 Summary - Train Loss: 0.0259, Val Loss: 0.0318
+2025-06-04 07:32:08,964 - src.trainers.train - INFO - train.py:1186 - train_model - New best score/loss. Saving model to C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_best.pt (Val Loss: 0.03183580390039352, Train Loss: 0.0259)
+2025-06-04 07:32:08,993 - src.trainers.train.EarlyStopping - DEBUG - train.py:149 - __call__ - ES check: val_loss=0.0318, best_score=-0.03714704420763335
+2025-06-04 07:32:08,993 - src.trainers.train.EarlyStopping - INFO - train.py:155 - __call__ - ES: Model improved. New best val_loss=0.0318. Saving to C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_checkpoint.pt
+2025-06-04 07:32:09,031 - src.trainers.train.EarlyStopping - DEBUG - train.py:186 - save_checkpoint - Checkpoint saved: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_checkpoint.pt
+2025-06-04 07:32:09,032 - src.trainers.train - INFO - train.py:1095 - train_model - ====== Epoch 7/50 ===== LR: 7.0e-04 =====
+2025-06-04 07:33:02,205 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 7, Batch 0/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 07:47:55,631 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 7, Batch 56/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 08:02:51,940 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 7, Batch 112/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 08:18:50,302 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 7, Batch 168/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 08:34:13,893 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 7, Batch 224/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 08:49:15,558 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 7, Batch 280/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 09:04:08,105 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 7, Batch 336/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 09:19:14,853 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 7, Batch 392/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 09:34:04,962 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 7, Batch 448/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 09:49:15,034 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 7, Batch 504/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 10:03:54,336 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 7, Batch 560/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 10:06:14,028 - src.trainers.train - INFO - train.py:592 - train_epoch - Ep 7 Train Loss:0.0230 MAE:0.1301 RMSE:0.1875
+2025-06-04 10:58:25,323 - src.trainers.train - INFO - train.py:676 - validate - Ep 7 Valid Loss:0.0200 MAE:0.1166 RMSE:0.1566
+2025-06-04 10:58:25,324 - src.trainers.train - INFO - train.py:1158 - train_model - Epoch 7 Summary - Train Loss: 0.0230, Val Loss: 0.0200
+2025-06-04 10:58:25,325 - src.trainers.train - INFO - train.py:1186 - train_model - New best score/loss. Saving model to C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_best.pt (Val Loss: 0.019968747065660757, Train Loss: 0.0230)
+2025-06-04 10:58:25,366 - src.trainers.train.EarlyStopping - DEBUG - train.py:149 - __call__ - ES check: val_loss=0.0200, best_score=-0.03183580390039352
+2025-06-04 10:58:25,367 - src.trainers.train.EarlyStopping - INFO - train.py:155 - __call__ - ES: Model improved. New best val_loss=0.0200. Saving to C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_checkpoint.pt
+2025-06-04 10:58:25,414 - src.trainers.train.EarlyStopping - DEBUG - train.py:186 - save_checkpoint - Checkpoint saved: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_checkpoint.pt
+2025-06-04 10:58:25,415 - src.trainers.train - INFO - train.py:1095 - train_model - ====== Epoch 8/50 ===== LR: 4.2e-04 =====
+2025-06-04 10:59:17,556 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 8, Batch 0/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 11:14:22,181 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 8, Batch 56/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 11:28:33,012 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 8, Batch 112/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 11:42:53,710 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 8, Batch 168/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 11:57:33,917 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 8, Batch 224/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 12:12:15,651 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 8, Batch 280/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 12:28:38,272 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 8, Batch 336/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 12:45:54,239 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 8, Batch 392/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 13:02:36,145 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 8, Batch 448/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 13:19:04,377 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 8, Batch 504/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 13:34:52,150 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 8, Batch 560/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 13:38:24,926 - src.trainers.train - INFO - train.py:592 - train_epoch - Ep 8 Train Loss:0.0215 MAE:0.1240 RMSE:0.1682
+2025-06-04 14:31:31,932 - src.trainers.train - INFO - train.py:676 - validate - Ep 8 Valid Loss:0.0179 MAE:0.1051 RMSE:0.1421
+2025-06-04 14:31:31,934 - src.trainers.train - INFO - train.py:1158 - train_model - Epoch 8 Summary - Train Loss: 0.0215, Val Loss: 0.0179
+2025-06-04 14:31:31,935 - src.trainers.train - INFO - train.py:1186 - train_model - New best score/loss. Saving model to C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_best.pt (Val Loss: 0.01794952174099992, Train Loss: 0.0215)
+2025-06-04 14:31:31,969 - src.trainers.train.EarlyStopping - DEBUG - train.py:149 - __call__ - ES check: val_loss=0.0179, best_score=-0.019968747065660757
+2025-06-04 14:31:31,969 - src.trainers.train.EarlyStopping - INFO - train.py:155 - __call__ - ES: Model improved. New best val_loss=0.0179. Saving to C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_checkpoint.pt
+2025-06-04 14:31:32,010 - src.trainers.train.EarlyStopping - DEBUG - train.py:186 - save_checkpoint - Checkpoint saved: C:\Users\oguzhan\Documents\Code\python\yl_makina_02\models\improved\model_checkpoint.pt
+2025-06-04 14:31:32,011 - src.trainers.train - INFO - train.py:1095 - train_model - ====== Epoch 9/50 ===== LR: 2.0e-04 =====
+2025-06-04 14:32:16,770 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 9, Batch 0/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 14:46:23,789 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 9, Batch 56/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 15:00:37,789 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 9, Batch 112/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 15:14:49,967 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 9, Batch 168/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 15:29:34,295 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 9, Batch 224/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 15:44:48,229 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 9, Batch 280/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 16:00:14,337 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 9, Batch 336/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 16:14:09,251 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 9, Batch 392/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 16:28:04,101 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 9, Batch 448/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 16:42:25,854 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 9, Batch 504/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 16:56:45,218 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 9, Batch 560/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
+2025-06-04 16:59:03,405 - src.trainers.train - INFO - train.py:592 - train_epoch - Ep 9 Train Loss:0.0200 MAE:0.1219 RMSE:0.1682
+2025-06-04 17:53:02,316 - src.trainers.train - INFO - train.py:676 - validate - Ep 9 Valid Loss:0.0188 MAE:0.1063 RMSE:0.1415
+2025-06-04 17:53:02,316 - src.trainers.train - INFO - train.py:1158 - train_model - Epoch 9 Summary - Train Loss: 0.0200, Val Loss: 0.0188
+2025-06-04 17:53:02,316 - src.trainers.train.EarlyStopping - DEBUG - train.py:149 - __call__ - ES check: val_loss=0.0188, best_score=-0.01794952174099992
+2025-06-04 17:53:02,316 - src.trainers.train.EarlyStopping - DEBUG - train.py:162 - __call__ - ES: No improvement. Counter: 1/8
+2025-06-04 17:53:02,316 - src.trainers.train - INFO - train.py:1095 - train_model - ====== Epoch 10/50 ===== LR: 5.9e-05 =====
+2025-06-04 17:53:48,032 - src.trainers.train - DEBUG - train.py:526 - train_epoch - Train Ep 10, Batch 0/569, X:torch.Size([128, 24, 12, 43]), Y:torch.Size([128, 12, 1])
